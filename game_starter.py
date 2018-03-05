@@ -20,17 +20,12 @@ class GameStarter():
 
 
     def launchGame(self):
-        cmd00 = 'set ttiUsername=' + self.user_name
-        cmd01 = 'set ttiPassword=password'
-        cmd02 = 'set TTI_PLAYCOOKIE=' + self.user_name
-        cmd03 = 'set TTI_GAMESERVER=' + self.game_server
-        cmd04 = 'cd src && ' + self.python_path + ' -m ' 'toontown.toonbase.ClientStart'
-
-        subprocess.call(cmd00, shell=True)
-        subprocess.call(cmd01, shell=True)
-        subprocess.call(cmd02, shell=True)
-        subprocess.call(cmd03, shell=True)
-        subprocess.call(cmd04, shell=True)
-
+        # We should really have some type of iterator for this shit
+        subprocess.call(CMD_00, shell=True)
+        subprocess.call(CMD_01, shell=True)
+        subprocess.call(CMD_02, shell=True)
+        subprocess.call(CMD_03, shell=True)
+        subprocess.call(CMD_04, shell=True)
+        subprocess.call(CMD_05, shell=True)
 
 

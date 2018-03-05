@@ -12,7 +12,7 @@ CURRENT_PLATFORM = platform.system()
 CURRENT_PATH = os.getcwd()
 
 if TESTING_NF:
-    print (CURRENT_PLATFORM)
+    print ('Host operating system: ' + CURRENT_PLATFORM)
 
 
 
@@ -59,6 +59,7 @@ DOWNLOADING_FILE = 'Downloading file: %s...'
 DOWNLOAD_COMPLETE_FILE = 'Download for %s, has completed!'
 FILE_UPTODATE = '%s is up to date'
 FILE_DOWNLOAD_FAILED = 'Could not download %s!'
+LINK_INVALID = 'Something went wrong while parsing download link for: %s'
 
 UPDATED_STARTED = 'Update has begun! Please wait...'
 UPDATE_COMPLETE = 'The game is up to date!'

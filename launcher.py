@@ -12,7 +12,7 @@ from link_parser import LinkParser
 class ToontownLauncher(LinkParser, GameStarter):
 
     def __init__(self):
-        print ('Starting launcher!')
+        print ('Starting launcher!\n')
   
         # Initalize our objects
         LinkParser.__init__(self)
@@ -35,7 +35,9 @@ class ToontownLauncher(LinkParser, GameStarter):
 
         self.parseLinks()
 
-        print (self.zipped_files)
+        self.manageLinkData()
+
+
 
 
         return
@@ -59,30 +61,40 @@ class ToontownLauncher(LinkParser, GameStarter):
 
 
 
-    def manageLinkData(self, file_url, file_path, file_name, file_format, file_r_hash):
-        # Have we downloaded the file or not?
-        if os.path.exists(file_path):
-            # File already exists, lets check the hash
+    def manageLinkData(self):
 
-            # Get local hash of the file
-            file_l_hash = self.getLocalMD5Sum(file_path)
+        for lists in self.download_list:
+            print lists
 
-            # Check if the file hashes match
-            if file_l_hash != file_r_hash:
-                print (file_l_hash)
-                print (file_r_hash)
+            # Grab the data out of the current list
+            file_url = lists[0]
+            file_path = lists[1]
+            file_name = lists[2]
+            file_r_hash = lists[3]
 
-                # Hashes didnt match, download it
-                #self.downloadFile(directory, file_name, file_url)
+            # Have we downloaded the file or not?
+            if os.path.exists(file_path):
+                # File already exists, lets check the hash
+
+                # Get local hash of the file
+                file_l_hash = self.getLocalMD5Sum(file_path)
+
+                # Check if the file hashes match
+                if file_l_hash != file_r_hash:
+                    print (file_l_hash)
+                    print (file_r_hash)
+
+                    # Hashes didnt match, download it
+                    #self.downloadFile(directory, file_name, file_url)
+
+                else:
+                    print (file_name +': file up to date!\n')
 
             else:
-                print (file_name +': file up to date!\n')
+                # The file does not exist, we MUST to download it
 
-        else:
-            # The file does not exist, we MUST to download it
-
-            self.downloadFile(file_path, file_url)
-            print ("DOWNLOAD IT")
+                self.downloadFile(file_path, file_url)
+                print ("DOWNLOAD IT")
 
 
 
@@ -208,26 +220,6 @@ class ToontownLauncher(LinkParser, GameStarter):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # Split string on specified dilimeter X amount of times
-    def stringSplitter(self, link_data, delimimeter, occurrence):
-        return link_data.split(delimimeter, occurrence)
 
 
 
