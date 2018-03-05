@@ -13,10 +13,12 @@ class GameStarter():
         self.python_path = CURRENT_PATH + PYTHON_PATH
 
 
+
     # Ask for username
     def getUsername(self):
         print ('Enter username: ')
         self.user_name = ''
+
 
 
     def launchGame(self):
@@ -27,5 +29,6 @@ class GameStarter():
         subprocess.call(CMD_03, shell=True)
         subprocess.call(CMD_04, shell=True)
         subprocess.call(CMD_05, shell=True)
+
 
 

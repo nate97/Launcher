@@ -55,16 +55,20 @@ else:
 ####################################
 
 ### Phrases ###
-DOWNLOADING_FILE = 'Downloading file: %s...'
-DOWNLOAD_COMPLETE_FILE = 'Download for %s, has completed!'
-FILE_UPTODATE = '%s is up to date'
-FILE_DOWNLOAD_FAILED = 'Could not download %s!'
-LINK_INVALID = 'Something went wrong while parsing download link for: %s'
+DOWNLOADING_FILE = 'Downloading file: %s'
+DOWNLOAD_COMPLETE_FILE = '%s has completed.'
+FILE_UPTODATE = '%s is up to date.'
+FILE_DOWNLOAD_FAILED = 'Could not download %s !'
+LINK_INVALID = 'WARNING!!! Something went wrong while parsing: %s !'
 
 UPDATED_STARTED = 'Update has begun! Please wait...'
+FILE_CURRENT = 'File %s is already up to date.'
 UPDATE_COMPLETE = 'The game is up to date!'
 UPDATE_FAILED = 'Update has failed!'
 
+ARCHIVE_EXTRACTING = 'Extracting file: %s'
+ARCHIVE_COMPLETE = 'Finished extracting %s'
+ARCHIVE_FAILED = 'Could not extract %s'
 
 
 ##########################################
@@ -81,7 +85,7 @@ else:
 if CURRENT_PLATFORM == 'Linux':
     PYTHON_PATH = '/usr/bin/python2'
 else:
-    PYTHON_PATH = '\Panda3D-1.10.0-x64\python\ppython.exe'
+    PYTHON_PATH = '\panda3d\python\ppython.exe'
 
 ### Game starting commands ###
 if CURRENT_PLATFORM == 'Linux':
@@ -99,6 +103,9 @@ else:
     CMD_03 = 'set TTI_GAMESERVER= %s'
     CMD_04 = 'cd src'
     CMD_05 = '%s -m toontown.toonbase.ClientStart'
+
+# Possibly loop through a list for doing the appropirate commands for starting the game
+GAME_CMD_LIST = [CMD_00, CMD_01, CMD_02, CMD_03, CMD_04, CMD_05]
 
 
 

@@ -64,11 +64,11 @@ class LinkParser():
                     file_path = BASE_FILEPATH_S + file_name
 
                 # We need to append all files to the download list
-                self.download_list.append([file_url, file_path, file_name, file_r_hash])
+                self.download_list.append([file_url, file_path, file_name, file_format, file_r_hash])
 
                 # The file is a special case so we will append to the unzip_list to deal with later
                 if file_format == ZIPPED_FILE:
-                    self.unzip_list.append([file_url, file_path, file_name, file_r_hash])
+                    self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash])
 
             else:
                 # Something was wrong with the data on that line... passing...
