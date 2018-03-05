@@ -22,13 +22,19 @@ class GameStarter():
 
 
     def launchGame(self):
-        # We should really have some type of iterator for this shit
-        subprocess.call(CMD_00, shell=True)
-        subprocess.call(CMD_01, shell=True)
-        subprocess.call(CMD_02, shell=True)
-        subprocess.call(CMD_03, shell=True)
-        subprocess.call(CMD_04, shell=True)
-        subprocess.call(CMD_05, shell=True)
+        # This still needs work but I guess this is slightly better
+        cmd_00 = (CMD_00 % self.user_name)
+        cmd_01 = (CMD_01)
+        cmd_02 = (CMD_02 % self.user_name)
+        cmd_03 = (CMD_03 % GAME_SERVER)
+        cmd_04 = (CMD_04)
+        cmd_05 = (CMD_05 % self.python_path)
+
+        cmd_list = [cmd_00, cmd_01, cmd_02, cmd_03, cmd_05, cmd_05]
+
+        for command in cmd_list:
+            subprocess.call(command, shell=True)
+
 
 
 

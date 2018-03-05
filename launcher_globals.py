@@ -70,7 +70,12 @@ ARCHIVE_EXTRACTING = 'Extracting file: %s'
 ARCHIVE_COMPLETE = 'Finished extracting %s'
 ARCHIVE_FAILED = 'Could not extract %s'
 
+MD5_FAILED = 'Failed retriving MD5 hash for %s !'
 
+LAUNCHER_STATE_WAITING = 'Login'
+LAUNCHER_STATE_UPDATING = 'Please wait...'
+
+LAUNCHER_STATUS_LOGIN = 'Please login...'
 
 ##########################################
 ########## For the game starter ##########

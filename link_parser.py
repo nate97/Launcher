@@ -24,6 +24,10 @@ class LinkParser():
         # Iterate through the lines in the file
         for line in range(len(lines)):
 
+            # CALL BACK THE UI
+            self.uiCallback.processEvents()
+            # CALL BACK THE UI
+
             # Get single line out of our links file
             single_line = lines[line]
 
@@ -41,6 +45,10 @@ class LinkParser():
     def parseLinks(self):
         # Loop through each item in our list
         for link_data in self.link_data:
+
+            # CALL BACK THE UI
+            self.uiCallback.processEvents()
+            # CALL BACK THE UI
 
             # Split out the data into a list so we can extract the individual parts
             link_data = self.stringSplitter(link_data, DILIMETER, OCCURENCE)
@@ -71,22 +79,23 @@ class LinkParser():
                     self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash])
 
             else:
+                # PUT CALL BACK IN TO CANCEL UPDATE PROCESS!!!
                 # Something was wrong with the data on that line... passing...
-                if TESTING_NF:
-                    print (LINK_INVALID % file_name)
-                # MAY WANT TO JUST END THE PROCESS AT THIS POINT... PUT A CALL BACK IN LATER???
+                print (LINK_INVALID % file_name)
+
 
 
 
     # Split string on specified dilimeter X amount of times
     def stringSplitter(self, link_data, delimimeter, occurrence):
-        # This is incase something is wrong with the file...
+        # This is incase something is wrong with the line...
         items_in_line = link_data.count(delimimeter)
         if items_in_line == occurrence:
             link_data = link_data.split(delimimeter, 5)
             return link_data
 
         else:
+            # PUT CALL BACK TO CANCEL THE UPDATE PROCESS!!!
             # Something is wrong with the line...
             return False
 
