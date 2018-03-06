@@ -24,9 +24,7 @@ class LinkParser():
         # Iterate through the lines in the file
         for line in range(len(lines)):
 
-            # CALL BACK THE UI
-            self.uiCallback.processEvents()
-            # CALL BACK THE UI
+            self.refreshUI()
 
             # Get single line out of our links file
             single_line = lines[line]
@@ -46,9 +44,7 @@ class LinkParser():
         # Loop through each item in our list
         for link_data in self.link_data:
 
-            # CALL BACK THE UI
-            self.uiCallback.processEvents()
-            # CALL BACK THE UI
+            self.refreshUI()
 
             # Split out the data into a list so we can extract the individual parts
             link_data = self.stringSplitter(link_data, DILIMETER, OCCURENCE)
@@ -79,10 +75,9 @@ class LinkParser():
                     self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash])
 
             else:
-                # PUT CALL BACK IN TO CANCEL UPDATE PROCESS!!!
-                # Something was wrong with the data on that line... passing...
                 print (LINK_INVALID % file_name)
-
+                self.setFailedLauncher()
+                break
 
 
 
@@ -95,7 +90,6 @@ class LinkParser():
             return link_data
 
         else:
-            # PUT CALL BACK TO CANCEL THE UPDATE PROCESS!!!
             # Something is wrong with the line...
             return False
 

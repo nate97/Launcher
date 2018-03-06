@@ -18,16 +18,23 @@ class Launcher(LinkParser, GameStarter):
         # Initalize our objects
         LinkParser.__init__(self)
         GameStarter.__init__(self)
+    
 
-        self.ui = None
+    def checkCredentials(self):
+        print (self.uiCallback.uName)
+        if self.uiCallback.uName and self.uiCallback.pWord:
+            self.wantUpdates()
+        else:
+            self.uiCallback.enterCredentials()
 
-        self.want_update = True
-        self.cancel_update = False
-        self.completed_update = False
 
 
+    def wantUpdates(self):
+        # Setup the UI for the update in progress screen
+        self.uiCallback.setUpdateUI()
+        self.uiCallback.setProgressZero()
+        self.refreshUI()
 
-    def wantUpdates(self):        
         # Build our folder structure FIRST
         self.createDirectory(BASE_FILEPATH_S)
         # Downlaod the resource update file
@@ -51,11 +58,11 @@ class Launcher(LinkParser, GameStarter):
     def downloadManager(self):
         if self.download_list:
             # We have files to download
+
             for lists in self.download_list:
 
-                # CALL BACK THE UI
-                self.uiCallback.processEvents()
-                # CALL BACK THE UI
+                self.uiCallback.countProgress()
+                self.refreshUI()
 
                 # Grab the data out of the current list
                 file_url = lists[0]
@@ -70,15 +77,16 @@ class Launcher(LinkParser, GameStarter):
 
                     # Get local hash of the file
                     file_l_hash = self.getMD5Sum(file_path)
+                    if not file_l_hash:
+                        self.setFailedLauncher()
+                        break
 
                     # Check if the file hashes match
                     if file_l_hash != file_r_hash:
-                        print (file_l_hash)
-                        print (file_r_hash)
-
                         # Hashes didnt match, download it
-                        self.downloadFile(file_name, file_path, file_url)
-
+                         if not self.downloadFile(file_name, file_path, file_url):
+                            self.setFailedLauncher()
+                            break
                     else:
                         # The file was up to date!
                         print (FILE_CURRENT % file_name)
@@ -89,12 +97,16 @@ class Launcher(LinkParser, GameStarter):
 
                 else:
                     # The file does not exist, we MUST download it
-                    self.downloadFile(file_name, file_path, file_url)
+                    if not self.downloadFile(file_name, file_path, file_url):
+                        self.setFailedLauncher()
+                        break
             return
 
     # Download a file with the requests library
     def downloadFile(self, file_name, file_path, file_url):
         try:
+            self.ui.launcher_status.setText(DOWNLOADING_FILE % file_name)
+            self.refreshUI()
             print (DOWNLOADING_FILE % file_name)
 
             response = requests.get(file_url)
@@ -106,6 +118,7 @@ class Launcher(LinkParser, GameStarter):
         except:
             # PUT A CALLBACK HERE TO CANCEL THE UPDATE PROCESS!!!
             print (FILE_DOWNLOAD_FAILED % file_name)
+            return False
         return
 
 
@@ -115,9 +128,7 @@ class Launcher(LinkParser, GameStarter):
             # We have files to extract...
             for lists in self.unzip_list:
 
-                # CALL BACK THE UI
-                self.uiCallback.processEvents()
-                # CALL BACK THE UI
+                self.refreshUI()
 
                 # Grab the data out of the current list
                 file_url = lists[0]
@@ -125,14 +136,21 @@ class Launcher(LinkParser, GameStarter):
                 file_name = lists[2]
                 file_r_hash = lists[3]
 
-                self.extractArchive(file_name)
+                if not self.extractArchive(file_name):
+                    self.setFailedLauncher()
+                    break
+        return
 
 
 
     # Extract a file
     def extractArchive(self, file_name, directory=''):
         try:
+
+            self.ui.launcher_status.setText(ARCHIVE_EXTRACTING % file_name)
+            self.refreshUI()
             print (ARCHIVE_EXTRACTING % file_name)
+
             zip_data = zipfile.ZipFile(file_name)
             zip_data.extractall(directory)
             zip_data.close()
@@ -140,6 +158,7 @@ class Launcher(LinkParser, GameStarter):
         except:
             # PUT CALL BACK HERE TO CANCEL THE UPDATE PROCESS!!!
             print (ARCHIVE_FAILED % file_name)
+            return False
         return
 
 
@@ -168,29 +187,34 @@ class Launcher(LinkParser, GameStarter):
 
 
 
-    def setWantUpdate(self, flag):
-        self.want_update = flag
-
-
-
-    def getWantUpdate(self):
-        return self.want_update
-
-
-
-    def setCancelUpdate(flag):
-        self.cancel_update = flag
-
-
-
-    def getCancelUpdate():
-        return self.cancel_update
-
-
-    def setUICallback(self, callback):
+    def setUICallbacks(self, callback):
         self.uiCallback = callback
+        self.ui = callback.ui
 
 
-    def setUi(self, ui):
-        self.ui = ui
+
+    def setApp(self, qApp):
+        self.APP_UI = qApp
+
+
+
+    # CALL BACK THE UI
+    def refreshUI(self):
+        self.APP_UI.processEvents()
+
+
+
+    def setFailedLauncher(self):
+        self.link_data = []
+        self.download_list = []
+        self.unzip_list = []
+        self.setFailedUI()
+
+
+
+    def setFailedUI(self):
+        self.uiCallback.setFailedUI()
+        self.refreshUI()
+
+
 
