@@ -20,63 +20,122 @@ class Ui_LauncherWindow(object):
         LauncherWindow.setSizePolicy(sizePolicy)
         LauncherWindow.setMinimumSize(QtCore.QSize(800, 500))
         LauncherWindow.setMaximumSize(QtCore.QSize(800, 500))
+        LauncherWindow.setStyleSheet("background-image: url(:/images/images/toontown_bg.png);")
         self.centralwidget = QtWidgets.QWidget(LauncherWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.login = QtWidgets.QFrame(self.centralwidget)
-        self.login.setGeometry(QtCore.QRect(439, 130, 311, 201))
-        self.login.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.login.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.bg = QtWidgets.QFrame(self.centralwidget)
+        self.bg.setGeometry(QtCore.QRect(-10, 0, 821, 501))
+        self.bg.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.bg.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.bg.setObjectName("bg")
+        self.login = QtWidgets.QFrame(self.bg)
+        self.login.setGeometry(QtCore.QRect(60, 50, 701, 391))
+        self.login.setStyleSheet("background: #f9f9f9;\n"
+"border-radius: 25;\n"
+"border: 5px solid white;\n"
+"padding: 5px;\n"
+"")
+        self.login.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.login.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.login.setLineWidth(0)
         self.login.setObjectName("login")
-        self.username_text = QtWidgets.QLabel(self.login)
-        self.username_text.setGeometry(QtCore.QRect(30, 50, 81, 19))
-        self.username_text.setObjectName("username_text")
-        self.password_text = QtWidgets.QLabel(self.login)
-        self.password_text.setGeometry(QtCore.QRect(30, 100, 81, 19))
-        self.password_text.setObjectName("password_text")
         self.pass_input = QtWidgets.QLineEdit(self.login)
-        self.pass_input.setGeometry(QtCore.QRect(120, 100, 171, 27))
+        self.pass_input.setGeometry(QtCore.QRect(50, 130, 171, 27))
+        self.pass_input.setStyleSheet("background: white;\n"
+"border-radius: 5;\n"
+"border: 1px solid grey;\n"
+"padding: 0px;\n"
+"font: 12pt \"Arial\";")
+        self.pass_input.setFrame(False)
         self.pass_input.setObjectName("pass_input")
         self.user_input = QtWidgets.QLineEdit(self.login)
-        self.user_input.setGeometry(QtCore.QRect(120, 50, 171, 27))
+        self.user_input.setGeometry(QtCore.QRect(50, 80, 171, 27))
+        self.user_input.setStyleSheet("background: white;\n"
+"border-radius: 5;\n"
+"border: 1px solid grey;\n"
+"padding: 0px;\n"
+"font: 12pt \"Arial\";")
+        self.user_input.setText("")
+        self.user_input.setFrame(False)
         self.user_input.setObjectName("user_input")
         self.launcher_state = QtWidgets.QLabel(self.login)
-        self.launcher_state.setGeometry(QtCore.QRect(20, 10, 271, 21))
+        self.launcher_state.setGeometry(QtCore.QRect(60, 30, 321, 31))
         font = QtGui.QFont()
+        font.setFamily("Anton")
         font.setPointSize(14)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
         self.launcher_state.setFont(font)
+        self.launcher_state.setStyleSheet("border-radius: 5;\n"
+"border: 0px solid #ffffff;\n"
+"padding: 0px;\n"
+"font: 14pt \"Anton\";")
         self.launcher_state.setObjectName("launcher_state")
         self.launcher_status = QtWidgets.QLabel(self.login)
-        self.launcher_status.setGeometry(QtCore.QRect(20, 170, 271, 21))
+        self.launcher_status.setGeometry(QtCore.QRect(60, 280, 621, 31))
+        self.launcher_status.setStyleSheet("border-radius: 0;\n"
+"border: 0px solid #ffffff;\n"
+"padding: 0px;\n"
+"font: 14pt \"Anton\";")
         self.launcher_status.setObjectName("launcher_status")
         self.progress_bar = QtWidgets.QProgressBar(self.login)
         self.progress_bar.setEnabled(True)
-        self.progress_bar.setGeometry(QtCore.QRect(20, 80, 271, 23))
+        self.progress_bar.setGeometry(QtCore.QRect(50, 320, 631, 31))
+        self.progress_bar.setAutoFillBackground(False)
+        self.progress_bar.setStyleSheet("QProgressBar:horizontal {\n"
+"border-radius: 5;\n"
+"border: 1px solid grey;\n"
+"padding: 0px;\n"
+"}\n"
+"\n"
+"\n"
+"QProgressBar::chunk:horizontal {\n"
+"background: #0a496d;\n"
+"}")
         self.progress_bar.setProperty("value", 24)
+        self.progress_bar.setTextVisible(False)
+        self.progress_bar.setInvertedAppearance(False)
+        self.progress_bar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
         self.progress_bar.setObjectName("progress_bar")
         self.pushButton = QtWidgets.QPushButton(self.login)
         self.pushButton.setEnabled(True)
-        self.pushButton.setGeometry(QtCore.QRect(200, 140, 91, 27))
-        self.pushButton.setObjectName("pushButton")
-        self.news = QtWidgets.QLabel(self.centralwidget)
-        self.news.setGeometry(QtCore.QRect(50, 20, 341, 51))
+        self.pushButton.setGeometry(QtCore.QRect(50, 180, 171, 51))
         font = QtGui.QFont()
-        font.setPointSize(21)
-        self.news.setFont(font)
-        self.news.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.news.setStyleSheet("")
-        self.news.setAlignment(QtCore.Qt.AlignCenter)
-        self.news.setWordWrap(True)
-        self.news.setObjectName("news")
-        self.news_2 = QtWidgets.QLabel(self.centralwidget)
-        self.news_2.setGeometry(QtCore.QRect(460, 20, 281, 91))
+        font.setFamily("Bowlby One SC")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.pushButton.setFont(font)
+        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.pushButton.setStyleSheet("QPushButton { \n"
+"    color: white;\n"
+"    background: #cc3018;\n"
+"    border-radius: 5;\n"
+"    border: 1px solid grey;\n"
+"    padding: 0px;\n"
+"    font: 12pt \"Bowlby One SC\";\n"
+"}\n"
+"\n"
+"QPushButton:hover { \n"
+"    background: #dd3d23;\n"
+"}")
+        self.pushButton.setDefault(False)
+        self.pushButton.setFlat(False)
+        self.pushButton.setObjectName("pushButton")
+        self.LOGO = QtWidgets.QLabel(self.login)
+        self.LOGO.setGeometry(QtCore.QRect(390, 60, 281, 91))
         font = QtGui.QFont()
         font.setPointSize(32)
-        self.news_2.setFont(font)
-        self.news_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.news_2.setStyleSheet("")
-        self.news_2.setAlignment(QtCore.Qt.AlignCenter)
-        self.news_2.setWordWrap(True)
-        self.news_2.setObjectName("news_2")
+        self.LOGO.setFont(font)
+        self.LOGO.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.LOGO.setStyleSheet("border-radius: 5;\n"
+"border: 0px solid #ffffff;\n"
+"padding: 0px;")
+        self.LOGO.setAlignment(QtCore.Qt.AlignCenter)
+        self.LOGO.setWordWrap(True)
+        self.LOGO.setObjectName("LOGO")
         LauncherWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LauncherWindow)
@@ -85,14 +144,15 @@ class Ui_LauncherWindow(object):
     def retranslateUi(self, LauncherWindow):
         _translate = QtCore.QCoreApplication.translate
         LauncherWindow.setWindowTitle(_translate("LauncherWindow", "Launcher"))
-        self.username_text.setText(_translate("LauncherWindow", "Username:"))
-        self.password_text.setText(_translate("LauncherWindow", "Password:"))
+        self.pass_input.setPlaceholderText(_translate("LauncherWindow", "password"))
+        self.user_input.setPlaceholderText(_translate("LauncherWindow", "username"))
         self.launcher_state.setText(_translate("LauncherWindow", "Login"))
         self.launcher_status.setText(_translate("LauncherWindow", "Launcher status"))
-        self.pushButton.setText(_translate("LauncherWindow", "Play"))
-        self.news.setText(_translate("LauncherWindow", "News"))
-        self.news_2.setText(_translate("LauncherWindow", "Launcher"))
+        self.progress_bar.setFormat(_translate("LauncherWindow", "%p%"))
+        self.pushButton.setText(_translate("LauncherWindow", "Play Now!"))
+        self.LOGO.setText(_translate("LauncherWindow", "Toontown Test"))
 
+import launcher_resource_rc
 
 if __name__ == "__main__":
     import sys

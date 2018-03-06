@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/toontown_bg.png</file>
+  </qresource>
+</RCC>
