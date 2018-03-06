@@ -302,7 +302,7 @@ padding: 0px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="launcher_resource.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>

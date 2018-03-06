@@ -152,7 +152,7 @@ class Ui_LauncherWindow(object):
         self.pushButton.setText(_translate("LauncherWindow", "Play Now!"))
         self.LOGO.setText(_translate("LauncherWindow", "Toontown Test"))
 
-import launcher_resource_rc
+import resources_rc
 
 if __name__ == "__main__":
     import sys
