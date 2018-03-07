@@ -31,6 +31,11 @@
     <height>500</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <stylestrategy>PreferDefault</stylestrategy>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Launcher</string>
   </property>
@@ -38,161 +43,159 @@
    <string notr="true">background-image: url(:/images/images/pattern_bg.png)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="bg">
+   <widget class="QFrame" name="login">
     <property name="geometry">
      <rect>
-      <x>-20</x>
-      <y>0</y>
-      <width>831</width>
-      <height>511</height>
+      <x>50</x>
+      <y>50</y>
+      <width>701</width>
+      <height>391</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QFrame" name="login">
-     <property name="geometry">
-      <rect>
-       <x>60</x>
-       <y>50</y>
-       <width>701</width>
-       <height>391</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background: #f9f9f9;
+    <property name="styleSheet">
+     <string notr="true">background: #f9f9f9;
 background-color: rgba(249,249,249, 0.82);
 border-radius: 25;
 border: 5px solid #cacaca;
 padding: 5px;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <widget class="QLineEdit" name="pass_input">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>140</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Sunken</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <widget class="QLineEdit" name="pass_input">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>120</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: white;
+     <property name="styleSheet">
+      <string notr="true">background: white;
 border-radius: 8;
 border: 2px solid #cacaca;
 padding: 0px;
 font: 12pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="frame">
-       <bool>false</bool>
-      </property>
-      <property name="placeholderText">
-       <string>password</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="user_input">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>70</y>
-        <width>191</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: white;
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>password</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="user_input">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>90</y>
+       <width>191</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferDefault</stylestrategy>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: white;
 border-radius: 8;
 border: 2px solid #cacaca;
 padding: 0px;
 font: 12pt &quot;Arial&quot;;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="frame">
-       <bool>false</bool>
-      </property>
-      <property name="placeholderText">
-       <string>username</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="launcher_state">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>20</y>
-        <width>361</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Anton</family>
-        <pointsize>14</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(249,249,249, 0);
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>username</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="launcher_state">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>40</y>
+       <width>241</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Anton</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(249,249,249, 0);
 border-radius: 5;
 border: 0px solid #ffffff;
 padding: 0px;
 font: 14pt &quot;Anton&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Login</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="launcher_status">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>280</y>
-        <width>621</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(249,249,249, 0);
+     </property>
+     <property name="text">
+      <string>Launcher state</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="launcher_status">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>280</y>
+       <width>641</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(249,249,249, 0);
 border-radius: 0;
 border: 0px solid #ffffff;
 padding: 0px;
 font: 14pt &quot;Anton&quot;;</string>
-      </property>
-      <property name="text">
-       <string>Launcher status</string>
-      </property>
-     </widget>
-     <widget class="QProgressBar" name="progress_bar">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>320</y>
-        <width>631</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QProgressBar:horizontal {
+     </property>
+     <property name="text">
+      <string>Launcher status</string>
+     </property>
+    </widget>
+    <widget class="QProgressBar" name="progress_bar">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>320</y>
+       <width>641</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QProgressBar:horizontal {
 background-color: rgba(249,249,249, 1);
 border-radius: 8;
 border: 2px solid #cacaca;
@@ -202,50 +205,54 @@ padding: 0px;
 
 QProgressBar::chunk:horizontal {
 background-color: #1c65a0;
+border-radius: 6;
 }</string>
-      </property>
-      <property name="value">
-       <number>24</number>
-      </property>
-      <property name="textVisible">
-       <bool>false</bool>
-      </property>
-      <property name="invertedAppearance">
-       <bool>false</bool>
-      </property>
-      <property name="textDirection">
-       <enum>QProgressBar::TopToBottom</enum>
-      </property>
-      <property name="format">
-       <string>%p%</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>180</y>
-        <width>191</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>Bowlby One SC</family>
-        <pointsize>12</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton { 
+     </property>
+     <property name="value">
+      <number>24</number>
+     </property>
+     <property name="textVisible">
+      <bool>false</bool>
+     </property>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="textDirection">
+      <enum>QProgressBar::TopToBottom</enum>
+     </property>
+     <property name="format">
+      <string>%p%</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>200</y>
+       <width>191</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bowlby One SC</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton { 
     color: white;
     background: #cc3018;
     border-radius: 8;
@@ -259,37 +266,36 @@ background-color: #1c65a0;
 QPushButton:hover { 
     background: #dd3d23;
 }</string>
-      </property>
-      <property name="text">
-       <string>Play Now!</string>
-      </property>
-      <property name="default">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>false</bool>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>40</y>
-        <width>311</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background: url(:/images/images/logo_plain_sampled.png);
+     </property>
+     <property name="text">
+      <string>Play Now!</string>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>40</y>
+       <width>311</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background: url(:/images/images/logo_plain_sampled.png);
 background-repeat: no-repeat;
 border-radius: 8;
 border: 0px solid #cacaca;
 padding: 0px;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
     </widget>
    </widget>
   </widget>
