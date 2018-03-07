@@ -97,18 +97,18 @@ else:
 
 ### Game starting commands ###
 if CURRENT_PLATFORM == 'Linux':
-    CMD_00 = 'set ttiUsername= %s'
-    CMD_01 = 'set ttiPassword=password'
-    CMD_02 = 'set TTI_PLAYCOOKIE= %s'
-    CMD_03 = 'set TTI_GAMESERVER= %s'
+    CMD_00 = 'set ttiUsername=%s'
+    CMD_01 = 'set ttiPassword=%s'
+    CMD_02 = 'set TTI_PLAYCOOKIE=%s'
+    CMD_03 = 'set TTI_GAMESERVER=%s'
     CMD_04 = 'cd src'
     CMD_05 = '%s -m toontown.toonbase.ClientStart'
 else:
     # TEMPORARILIY THE SAME!!!
-    CMD_00 = 'set ttiUsername= %s'
-    CMD_01 = 'set ttiPassword=password'
-    CMD_02 = 'set TTI_PLAYCOOKIE= %s'
-    CMD_03 = 'set TTI_GAMESERVER= %s'
+    CMD_00 = 'set ttiUsername=%s'
+    CMD_01 = 'set ttiPassword=%s'
+    CMD_02 = 'set TTI_PLAYCOOKIE=%s'
+    CMD_03 = 'set TTI_GAMESERVER=%s'
     CMD_04 = 'cd src'
     CMD_05 = '%s -m toontown.toonbase.ClientStart'
 

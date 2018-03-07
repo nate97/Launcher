@@ -14,20 +14,15 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.Launcher = Launcher()
     
-
         ### UI Globals ###
         self.counter = 0
-
         self.uName = False
         self.pWord = False
+        # This is defined so that we can call back the UI from the main application
+        self.APP = qApp
 
-
-        # Give the launcher a hook so it can update the interface    
-        self.Launcher.setApp(qApp)
         # So we can implement hooks to control the UI
         self.Launcher.setUICallbacks(self)
-
-
         # Set the startup state of the UI
         self.setDefaultUI()
         # Attatch functions to buttons
@@ -42,12 +37,13 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.Launcher.checkCredentials()
 
 
+
     def setDefaultUI(self):
         self.ui.launcher_state.setText(LAUNCHER_STATE_WAITING)
         self.ui.launcher_status.setText(LAUNCHER_STATUS_LOGIN)
         self.ui.pushButton.setEnabled(True)
-        self.ui.user_input.show()
-        self.ui.pass_input.show()
+        self.ui.user_input.setDisabled(False)
+        self.ui.pass_input.setDisabled(False)
         self.ui.user_input.setText('')
         self.ui.pass_input.setText('')
         self.ui.progress_bar.setValue(self.counter)
@@ -57,8 +53,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
     def setUpdateUI(self):
         self.ui.launcher_state.setText(LAUNCHER_STATE_UPDATING)
-        self.ui.user_input.hide()
-        self.ui.pass_input.hide()
+        self.ui.user_input.setDisabled(True)
+        self.ui.pass_input.setDisabled(True)
         self.ui.pushButton.setEnabled(False)
 
 
@@ -85,14 +81,15 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.counter = 0
         self.ui.progress_bar.setValue(self.counter)
         complete = len(self.Launcher.download_list)
+        print (complete)
         self.ui.progress_bar.setMaximum(complete)
 
 
 
     def countProgress(self):
-        self.counter +1
+        print (self.counter)
         self.ui.progress_bar.setValue(self.counter)
-
+        self.counter +1
 
 
 def main():

@@ -23,16 +23,15 @@ class Launcher(LinkParser, GameStarter):
     def checkCredentials(self):
         print (self.uiCallback.uName)
         if self.uiCallback.uName and self.uiCallback.pWord:
-            self.wantUpdates()
+            self.updateManager()
         else:
             self.uiCallback.enterCredentials()
 
 
 
-    def wantUpdates(self):
+    def updateManager(self):
         # Setup the UI for the update in progress screen
         self.uiCallback.setUpdateUI()
-        self.uiCallback.setProgressZero()
         self.refreshUI()
 
         # Build our folder structure FIRST
@@ -44,6 +43,10 @@ class Launcher(LinkParser, GameStarter):
 
         # Parse through the links and put them into the appropriate lists
         self.parseLinks()
+
+        # Update the UI's progress bar AFTER the file list has been populated
+        self.uiCallback.setProgressZero()
+        self.refreshUI()
 
         # Start the download manager
         self.downloadManager()
@@ -98,10 +101,13 @@ class Launcher(LinkParser, GameStarter):
                         self.setFailedLauncher()
                         break
 
+                # Add progress to the UI's progress bar
                 self.uiCallback.countProgress()
                 self.refreshUI()
 
             return
+
+
 
     # Download a file with the requests library
     def downloadFile(self, file_name, file_path, file_url):
@@ -147,7 +153,6 @@ class Launcher(LinkParser, GameStarter):
     # Extract a file
     def extractArchive(self, file_name, directory=''):
         try:
-
             self.ui.launcher_status.setText(ARCHIVE_EXTRACTING % file_name)
             self.refreshUI()
             print (ARCHIVE_EXTRACTING % file_name)
@@ -194,17 +199,13 @@ class Launcher(LinkParser, GameStarter):
 
 
 
-    def setApp(self, qApp):
-        self.APP_UI = qApp
-
-
-
     # CALL BACK THE UI
     def refreshUI(self):
-        self.APP_UI.processEvents()
+        self.uiCallback.APP.processEvents()
 
 
 
+    # Set our variables the the defaults since the update failed
     def setFailedLauncher(self):
         self.link_data = []
         self.download_list = []
@@ -213,6 +214,7 @@ class Launcher(LinkParser, GameStarter):
 
 
 
+    # Tell the UI that updates have failed
     def setFailedUI(self):
         self.uiCallback.setFailedUI()
         self.refreshUI()
