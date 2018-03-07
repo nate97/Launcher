@@ -78,7 +78,7 @@ padding: 5px;</string>
       </rect>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background: white;
@@ -252,7 +252,7 @@ border-radius: 6;
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::NoFocus</enum>
+      <enum>Qt::ClickFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton { 
