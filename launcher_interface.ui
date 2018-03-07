@@ -78,7 +78,7 @@ padding: 5px;</string>
       </rect>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::TabFocus</enum>
+      <enum>Qt::NoFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background: white;
@@ -112,6 +112,9 @@ font: 12pt &quot;Arial&quot;;</string>
        <bold>false</bold>
        <stylestrategy>PreferDefault</stylestrategy>
       </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::StrongFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background: white;
