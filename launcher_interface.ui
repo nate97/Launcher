@@ -78,7 +78,7 @@ padding: 5px;</string>
       </rect>
      </property>
      <property name="focusPolicy">
-      <enum>Qt::ClickFocus</enum>
+      <enum>Qt::TabFocus</enum>
      </property>
      <property name="styleSheet">
       <string notr="true">background: white;
