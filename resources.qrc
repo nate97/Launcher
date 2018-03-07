@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="images">
+    <file>images/logo_plain_sampled.png</file>
+    <file>images/pattern_bg.png</file>
+    <file>images/pattern.png</file>
     <file>images/toontown_bg.png</file>
   </qresource>
 </RCC>

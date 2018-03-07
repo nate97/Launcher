@@ -35,16 +35,16 @@
    <string>Launcher</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/images/images/toontown_bg.png);</string>
+   <string notr="true">background-image: url(:/images/images/pattern_bg.png)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="bg">
     <property name="geometry">
      <rect>
-      <x>-10</x>
+      <x>-20</x>
       <y>0</y>
-      <width>821</width>
-      <height>501</height>
+      <width>831</width>
+      <height>511</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -64,10 +64,10 @@
      </property>
      <property name="styleSheet">
       <string notr="true">background: #f9f9f9;
+background-color: rgba(249,249,249, 0.82);
 border-radius: 25;
-border: 5px solid white;
-padding: 5px;
-</string>
+border: 5px solid #cacaca;
+padding: 5px;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -81,16 +81,16 @@ padding: 5px;
      <widget class="QLineEdit" name="pass_input">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>130</y>
-        <width>171</width>
-        <height>27</height>
+        <x>40</x>
+        <y>120</y>
+        <width>191</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background: white;
-border-radius: 5;
-border: 1px solid grey;
+border-radius: 8;
+border: 2px solid #cacaca;
 padding: 0px;
 font: 12pt &quot;Arial&quot;;</string>
       </property>
@@ -104,16 +104,16 @@ font: 12pt &quot;Arial&quot;;</string>
      <widget class="QLineEdit" name="user_input">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>171</width>
-        <height>27</height>
+        <x>40</x>
+        <y>70</y>
+        <width>191</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">background: white;
-border-radius: 5;
-border: 1px solid grey;
+border-radius: 8;
+border: 2px solid #cacaca;
 padding: 0px;
 font: 12pt &quot;Arial&quot;;</string>
       </property>
@@ -130,9 +130,9 @@ font: 12pt &quot;Arial&quot;;</string>
      <widget class="QLabel" name="launcher_state">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>30</y>
-        <width>321</width>
+        <x>50</x>
+        <y>20</y>
+        <width>361</width>
         <height>31</height>
        </rect>
       </property>
@@ -146,7 +146,8 @@ font: 12pt &quot;Arial&quot;;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 5;
+       <string notr="true">background-color: rgba(249,249,249, 0);
+border-radius: 5;
 border: 0px solid #ffffff;
 padding: 0px;
 font: 14pt &quot;Anton&quot;;</string>
@@ -165,7 +166,8 @@ font: 14pt &quot;Anton&quot;;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 0;
+       <string notr="true">background-color: rgba(249,249,249, 0);
+border-radius: 0;
 border: 0px solid #ffffff;
 padding: 0px;
 font: 14pt &quot;Anton&quot;;</string>
@@ -180,7 +182,7 @@ font: 14pt &quot;Anton&quot;;</string>
       </property>
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>40</x>
         <y>320</y>
         <width>631</width>
         <height>31</height>
@@ -191,14 +193,15 @@ font: 14pt &quot;Anton&quot;;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QProgressBar:horizontal {
-border-radius: 5;
-border: 1px solid grey;
+background-color: rgba(249,249,249, 1);
+border-radius: 8;
+border: 2px solid #cacaca;
 padding: 0px;
 }
 
 
 QProgressBar::chunk:horizontal {
-background: #0a496d;
+background-color: #1c65a0;
 }</string>
       </property>
       <property name="value">
@@ -223,9 +226,9 @@ background: #0a496d;
       </property>
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>40</x>
         <y>180</y>
-        <width>171</width>
+        <width>191</width>
         <height>51</height>
        </rect>
       </property>
@@ -245,11 +248,13 @@ background: #0a496d;
        <string notr="true">QPushButton { 
     color: white;
     background: #cc3018;
-    border-radius: 5;
-    border: 1px solid grey;
+    border-radius: 8;
+    border: 4px solid #cacaca;
     padding: 0px;
 	font: 12pt &quot;Bowlby One SC&quot;;
 }
+
+
 
 QPushButton:hover { 
     background: #dd3d23;
@@ -265,36 +270,24 @@ QPushButton:hover {
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="LOGO">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>60</y>
-        <width>281</width>
-        <height>91</height>
+        <x>330</x>
+        <y>40</y>
+        <width>311</width>
+        <height>111</height>
        </rect>
       </property>
-      <property name="font">
-       <font>
-        <pointsize>32</pointsize>
-       </font>
-      </property>
-      <property name="layoutDirection">
-       <enum>Qt::LeftToRight</enum>
-      </property>
       <property name="styleSheet">
-       <string notr="true">border-radius: 5;
-border: 0px solid #ffffff;
+       <string notr="true">background: url(:/images/images/logo_plain_sampled.png);
+background-repeat: no-repeat;
+border-radius: 8;
+border: 0px solid #cacaca;
 padding: 0px;</string>
       </property>
       <property name="text">
-       <string>Toontown Test</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
+       <string/>
       </property>
      </widget>
     </widget>
