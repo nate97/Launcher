@@ -61,9 +61,6 @@ class Launcher(LinkParser, GameStarter):
 
             for lists in self.download_list:
 
-                self.uiCallback.countProgress()
-                self.refreshUI()
-
                 # Grab the data out of the current list
                 file_url = lists[0]
                 file_path = lists[1]
@@ -100,6 +97,10 @@ class Launcher(LinkParser, GameStarter):
                     if not self.downloadFile(file_name, file_path, file_url):
                         self.setFailedLauncher()
                         break
+
+                self.uiCallback.countProgress()
+                self.refreshUI()
+
             return
 
     # Download a file with the requests library

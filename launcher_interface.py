@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'launcher_interface.ui'
 #
-# Created by: PyQt5 UI code generator 5.10.1
+# Created by: PyQt5 UI code generator 5.7
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,46 +20,46 @@ class Ui_LauncherWindow(object):
         LauncherWindow.setSizePolicy(sizePolicy)
         LauncherWindow.setMinimumSize(QtCore.QSize(800, 500))
         LauncherWindow.setMaximumSize(QtCore.QSize(800, 500))
-        LauncherWindow.setStyleSheet("background-image: url(:/images/images/toontown_bg.png);")
+        LauncherWindow.setStyleSheet("background-image: url(:/images/images/pattern_bg.png)")
         self.centralwidget = QtWidgets.QWidget(LauncherWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.bg = QtWidgets.QFrame(self.centralwidget)
-        self.bg.setGeometry(QtCore.QRect(-10, 0, 821, 501))
+        self.bg.setGeometry(QtCore.QRect(-20, 0, 831, 511))
         self.bg.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.bg.setFrameShadow(QtWidgets.QFrame.Raised)
         self.bg.setObjectName("bg")
         self.login = QtWidgets.QFrame(self.bg)
         self.login.setGeometry(QtCore.QRect(60, 50, 701, 391))
         self.login.setStyleSheet("background: #f9f9f9;\n"
+"background-color: rgba(249,249,249, 0.82);\n"
 "border-radius: 25;\n"
-"border: 5px solid white;\n"
-"padding: 5px;\n"
-"")
+"border: 5px solid #cacaca;\n"
+"padding: 5px;")
         self.login.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.login.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.login.setLineWidth(0)
         self.login.setObjectName("login")
         self.pass_input = QtWidgets.QLineEdit(self.login)
-        self.pass_input.setGeometry(QtCore.QRect(50, 130, 171, 27))
+        self.pass_input.setGeometry(QtCore.QRect(40, 120, 191, 31))
         self.pass_input.setStyleSheet("background: white;\n"
-"border-radius: 5;\n"
-"border: 1px solid grey;\n"
+"border-radius: 8;\n"
+"border: 2px solid #cacaca;\n"
 "padding: 0px;\n"
 "font: 12pt \"Arial\";")
         self.pass_input.setFrame(False)
         self.pass_input.setObjectName("pass_input")
         self.user_input = QtWidgets.QLineEdit(self.login)
-        self.user_input.setGeometry(QtCore.QRect(50, 80, 171, 27))
+        self.user_input.setGeometry(QtCore.QRect(40, 70, 191, 31))
         self.user_input.setStyleSheet("background: white;\n"
-"border-radius: 5;\n"
-"border: 1px solid grey;\n"
+"border-radius: 8;\n"
+"border: 2px solid #cacaca;\n"
 "padding: 0px;\n"
 "font: 12pt \"Arial\";")
         self.user_input.setText("")
         self.user_input.setFrame(False)
         self.user_input.setObjectName("user_input")
         self.launcher_state = QtWidgets.QLabel(self.login)
-        self.launcher_state.setGeometry(QtCore.QRect(60, 30, 321, 31))
+        self.launcher_state.setGeometry(QtCore.QRect(50, 20, 361, 31))
         font = QtGui.QFont()
         font.setFamily("Anton")
         font.setPointSize(14)
@@ -67,31 +67,34 @@ class Ui_LauncherWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.launcher_state.setFont(font)
-        self.launcher_state.setStyleSheet("border-radius: 5;\n"
+        self.launcher_state.setStyleSheet("background-color: rgba(249,249,249, 0);\n"
+"border-radius: 5;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
 "font: 14pt \"Anton\";")
         self.launcher_state.setObjectName("launcher_state")
         self.launcher_status = QtWidgets.QLabel(self.login)
         self.launcher_status.setGeometry(QtCore.QRect(60, 280, 621, 31))
-        self.launcher_status.setStyleSheet("border-radius: 0;\n"
+        self.launcher_status.setStyleSheet("background-color: rgba(249,249,249, 0);\n"
+"border-radius: 0;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
 "font: 14pt \"Anton\";")
         self.launcher_status.setObjectName("launcher_status")
         self.progress_bar = QtWidgets.QProgressBar(self.login)
         self.progress_bar.setEnabled(True)
-        self.progress_bar.setGeometry(QtCore.QRect(50, 320, 631, 31))
+        self.progress_bar.setGeometry(QtCore.QRect(40, 320, 631, 31))
         self.progress_bar.setAutoFillBackground(False)
         self.progress_bar.setStyleSheet("QProgressBar:horizontal {\n"
-"border-radius: 5;\n"
-"border: 1px solid grey;\n"
+"background-color: rgba(249,249,249, 1);\n"
+"border-radius: 8;\n"
+"border: 2px solid #cacaca;\n"
 "padding: 0px;\n"
 "}\n"
 "\n"
 "\n"
 "QProgressBar::chunk:horizontal {\n"
-"background: #0a496d;\n"
+"background-color: #1c65a0;\n"
 "}")
         self.progress_bar.setProperty("value", 24)
         self.progress_bar.setTextVisible(False)
@@ -100,7 +103,7 @@ class Ui_LauncherWindow(object):
         self.progress_bar.setObjectName("progress_bar")
         self.pushButton = QtWidgets.QPushButton(self.login)
         self.pushButton.setEnabled(True)
-        self.pushButton.setGeometry(QtCore.QRect(50, 180, 171, 51))
+        self.pushButton.setGeometry(QtCore.QRect(40, 180, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Bowlby One SC")
         font.setPointSize(12)
@@ -112,11 +115,13 @@ class Ui_LauncherWindow(object):
         self.pushButton.setStyleSheet("QPushButton { \n"
 "    color: white;\n"
 "    background: #cc3018;\n"
-"    border-radius: 5;\n"
-"    border: 1px solid grey;\n"
+"    border-radius: 8;\n"
+"    border: 4px solid #cacaca;\n"
 "    padding: 0px;\n"
 "    font: 12pt \"Bowlby One SC\";\n"
 "}\n"
+"\n"
+"\n"
 "\n"
 "QPushButton:hover { \n"
 "    background: #dd3d23;\n"
@@ -124,18 +129,15 @@ class Ui_LauncherWindow(object):
         self.pushButton.setDefault(False)
         self.pushButton.setFlat(False)
         self.pushButton.setObjectName("pushButton")
-        self.LOGO = QtWidgets.QLabel(self.login)
-        self.LOGO.setGeometry(QtCore.QRect(390, 60, 281, 91))
-        font = QtGui.QFont()
-        font.setPointSize(32)
-        self.LOGO.setFont(font)
-        self.LOGO.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.LOGO.setStyleSheet("border-radius: 5;\n"
-"border: 0px solid #ffffff;\n"
+        self.label = QtWidgets.QLabel(self.login)
+        self.label.setGeometry(QtCore.QRect(330, 40, 311, 111))
+        self.label.setStyleSheet("background: url(:/images/images/logo_plain_sampled.png);\n"
+"background-repeat: no-repeat;\n"
+"border-radius: 8;\n"
+"border: 0px solid #cacaca;\n"
 "padding: 0px;")
-        self.LOGO.setAlignment(QtCore.Qt.AlignCenter)
-        self.LOGO.setWordWrap(True)
-        self.LOGO.setObjectName("LOGO")
+        self.label.setText("")
+        self.label.setObjectName("label")
         LauncherWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LauncherWindow)
@@ -150,7 +152,6 @@ class Ui_LauncherWindow(object):
         self.launcher_status.setText(_translate("LauncherWindow", "Launcher status"))
         self.progress_bar.setFormat(_translate("LauncherWindow", "%p%"))
         self.pushButton.setText(_translate("LauncherWindow", "Play Now!"))
-        self.LOGO.setText(_translate("LauncherWindow", "Toontown Test"))
 
 import resources_rc
 

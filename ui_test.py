@@ -43,23 +43,20 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
 
     def setDefaultUI(self):
-        self.ui.progress_bar.hide()
         self.ui.launcher_state.setText(LAUNCHER_STATE_WAITING)
         self.ui.launcher_status.setText(LAUNCHER_STATUS_LOGIN)
         self.ui.pushButton.setEnabled(True)
-        self.ui.username_text.show()
-        self.ui.password_text.show()
         self.ui.user_input.show()
         self.ui.pass_input.show()
+        self.ui.user_input.setText('')
+        self.ui.pass_input.setText('')
+        self.ui.progress_bar.setValue(self.counter)
+        self.ui.progress_bar.setMaximum(100)
 
 
 
     def setUpdateUI(self):
-        self.ui.progress_bar.show()
         self.ui.launcher_state.setText(LAUNCHER_STATE_UPDATING)
-        self.ui.launcher_status.setText('Updating...')
-        self.ui.username_text.hide()
-        self.ui.password_text.hide()
         self.ui.user_input.hide()
         self.ui.pass_input.hide()
         self.ui.pushButton.setEnabled(False)
@@ -69,10 +66,13 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     # Reset all of our local variables to zero and reset the UI
     def setFailedUI(self):
         self.setDefaultUI()
-        self.ui.launcher_state.setText(LAUNCHER_STATE_FAILURE)
         self.counter = 0
         self.uName = False
         self.pWord = False
+        self.ui.launcher_state.setText(LAUNCHER_STATE_WAITING)
+        self.ui.launcher_status.setText(LAUNCHER_STATUS_FAILURE)
+        self.ui.progress_bar.setValue(self.counter)
+        self.ui.progress_bar.setMaximum(100)
 
 
 

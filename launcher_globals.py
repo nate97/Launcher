@@ -72,12 +72,12 @@ ARCHIVE_FAILED = 'Could not extract %s'
 
 MD5_FAILED = 'Failed retriving MD5 hash for %s !'
 
-LAUNCHER_STATE_WAITING = 'Login'
+LAUNCHER_STATE_WAITING = 'Please login...'
 LAUNCHER_STATE_UPDATING = 'Please wait...'
-LAUNCHER_STATE_FAILURE = 'Something went wrong while updating.'
 
-LAUNCHER_STATUS_LOGIN = 'Please login...'
+LAUNCHER_STATUS_LOGIN = 'Welcome!'
 LAUNCHER_STATUS_GIVE_INPUT = 'You must enter a username and password.'
+LAUNCHER_STATUS_FAILURE = 'Something went wrong while updating.'
 
 ##########################################
 ########## For the game starter ##########
