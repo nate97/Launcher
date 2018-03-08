@@ -6,7 +6,8 @@ import os
 ### DEBUG VARIABLE ###
 
 TESTING_NF = True
-LOCAL_GAME = True
+LOCAL_GAME_DOWNLOAD = True
+LOCAL_GAME_SERVER = False
 
 CURRENT_PLATFORM = platform.system()
 CURRENT_PATH = os.getcwd()
@@ -21,7 +22,7 @@ if TESTING_NF:
 ####################################
 
 ### DEBUGGING PURPOSES FOR LOCAL AND REMOTE FILE NAMES ###
-if LOCAL_GAME:
+if LOCAL_GAME_DOWNLOAD:
     RESOURCE_FILE = 'local_file_links.txt'
     RESOURCE_LINK = 'http://10.0.0.29/index.php/s/YEpPZvza2jfISz1/download'
 else:
@@ -51,7 +52,7 @@ else:
 
 
 ####################################
-########## For the client ##########
+########## For the launcher ##########
 ####################################
 
 ### Phrases ###
@@ -80,12 +81,14 @@ LAUNCHER_STATUS_LOGIN = 'Welcome!'
 LAUNCHER_STATUS_GIVE_INPUT = 'You must enter a username and password.'
 LAUNCHER_STATUS_FAILURE = 'Something went wrong while updating.'
 
+
+
 ##########################################
 ########## For the game starter ##########
 ##########################################
 
 ### Game server ###
-if TESTING_NF:
+if LOCAL_GAME_SERVER:
     GAME_SERVER = '127.0.0.1'
 else:
     GAME_SERVER = 'disguisedpenguin.onmypc.net'
@@ -98,23 +101,9 @@ else:
 
 ### Game starting commands ###
 if CURRENT_PLATFORM == 'Linux':
-    CMD_00 = 'set ttiUsername=%s'
-    CMD_01 = 'set ttiPassword=%s'
-    CMD_02 = 'set TTI_PLAYCOOKIE=%s'
-    CMD_03 = 'set TTI_GAMESERVER=%s'
-    CMD_04 = 'cd src'
-    CMD_05 = '%s -m toontown.toonbase.ClientStart'
+    CMD_00 = 'export ttiUsername=%s && export ttiPassword=%s && export TTI_PLAYCOOKIE=%s && export TTI_GAMESERVER=%s && cd src/ && %s -O -m toontown.toonbase.ClientStart'
 else:
-    # TEMPORARILIY THE SAME!!!
-    CMD_00 = 'set ttiUsername=%s'
-    CMD_01 = 'set ttiPassword=%s'
-    CMD_02 = 'set TTI_PLAYCOOKIE=%s'
-    CMD_03 = 'set TTI_GAMESERVER=%s'
-    CMD_04 = 'cd src'
-    CMD_05 = '%s -m toontown.toonbase.ClientStart'
-
-# Possibly loop through a list for doing the appropirate commands for starting the game
-GAME_CMD_LIST = [CMD_00, CMD_01, CMD_02, CMD_03, CMD_04, CMD_05]
+    CMD_00 = 'set ttiUsername=%s && set ttiPassword=%s && set TTI_PLAYCOOKIE=%s && set TTI_GAMESERVER=%s && cd "src" && %s -O -m toontown.toonbase.ClientStart'
 
 
 

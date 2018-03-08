@@ -1,5 +1,7 @@
 import subprocess
 import os
+import unicodedata
+from string import *
 
 from launcher_globals import *
 
@@ -9,32 +11,30 @@ class GameStarter():
 
     def __init__(self):
         # Start game internal globals
-        self.user_name = ''
-        self.python_path = CURRENT_PATH + PYTHON_PATH
 
-
-
-    # Ask for username
-    def getUsername(self):
-        print ('Enter username: ')
-        self.user_name = ''
+        if CURRENT_PLATFORM == 'Linux':
+            self.python_path = PYTHON_PATH
+        else:
+            self.python_path = '"'+ CURRENT_PATH + PYTHON_PATH + '"'
 
 
 
     def launchGame(self):
         # This still needs work but I guess this is slightly better
-        cmd_00 = (CMD_00 % self.user_name)
-        cmd_01 = (CMD_01)
-        cmd_02 = (CMD_02 % self.user_name)
-        cmd_03 = (CMD_03 % GAME_SERVER)
-        cmd_04 = (CMD_04)
-        cmd_05 = (CMD_05 % self.python_path)
+        cookie = (self.uiCallback.uName + self.uiCallback.pWord)
 
-        cmd_list = [cmd_00, cmd_01, cmd_02, cmd_03, cmd_05, cmd_05]
+        cookie = cookie.rstrip()
 
-        for command in cmd_list:
-            subprocess.call(command, shell=True)
+        cmd_00 = (CMD_00 % (self.uiCallback.uName, self.uiCallback.pWord, cookie, GAME_SERVER, self.python_path))
 
+        print (cmd_00)
+        # Before we run the command lets set the username variables to null
+        self.uiCallback.uName = False
+        self.uiCallback.pWord = False
+
+        subprocess.call(cmd_00, shell=True)
+
+        return
 
 
 

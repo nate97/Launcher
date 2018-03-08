@@ -16,6 +16,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     
         ### UI Globals ###
         self.counter = 0
+        self.complete_progress = 0
         self.uName = False
         self.pWord = False
         # This is defined so that we can call back the UI from the main application
@@ -31,8 +32,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
 
     def setCredentials(self):
-        self.uName = self.ui.user_input.text()
-        self.pWord = self.ui.pass_input.text()
+        self.uName = str(self.ui.user_input.text())
+        self.pWord = str(self.ui.pass_input.text())
         # Check to see if we have credentials
         self.Launcher.checkCredentials()
 
@@ -63,6 +64,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     def setFailedUI(self):
         self.setDefaultUI()
         self.counter = 0
+        self.complete_progress = 0
         self.uName = False
         self.pWord = False
         self.ui.launcher_state.setText(LAUNCHER_STATE_WAITING)
@@ -80,14 +82,20 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     def setProgressZero(self):
         self.counter = 0
         self.ui.progress_bar.setValue(self.counter)
-        complete = len(self.Launcher.download_list)
-        self.ui.progress_bar.setMaximum(complete)
+        self.complete_progress = len(self.Launcher.download_list) + len(self.Launcher.unzip_list)
+        self.ui.progress_bar.setMaximum(self.complete_progress )
 
 
 
     def countProgress(self):
         self.counter = self.counter +1
         self.ui.progress_bar.setValue(self.counter)
+
+
+
+    def subtractProgressZIP(self):
+        self.complete_progress = self.complete_progress -1
+        self.ui.progress_bar.setMaximum(self.complete_progress)
 
 
 

@@ -1,4 +1,5 @@
 import os
+import sys
 import os.path
 import zipfile
 import hashlib
@@ -56,6 +57,12 @@ class Launcher(LinkParser, GameStarter):
 
         self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
         self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
+        self.refreshUI()
+
+        self.launchGame()
+
+        sys.exit()
+
         return
 
 
@@ -97,6 +104,8 @@ class Launcher(LinkParser, GameStarter):
                         # If the file is up to date, and the directory already exists,
                         # remove the file from the list to be extracted
                             self.unzip_list.remove(lists)
+                            # Tell the progress bar that the maximum is less now
+                            self.uiCallback.subtractProgressZIP()
 
                 else:
                     # The file does not exist, we MUST download it
@@ -159,6 +168,11 @@ class Launcher(LinkParser, GameStarter):
                 if not self.extractArchive(file_name):
                     self.setFailedLauncher()
                     break
+
+                # Add progress to the UI's progress bar
+                self.uiCallback.countProgress()
+                self.refreshUI()
+
         return True
 
 
