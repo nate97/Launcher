@@ -23,14 +23,18 @@ class GameStarter():
         # This still needs work but I guess this is slightly better
         cookie = (self.uiCallback.uName + self.uiCallback.pWord)
 
-        cookie = cookie.rstrip()
+        ### Game starting commands ###
+        if CURRENT_PLATFORM == 'Linux':
+            cmd_00 = 'export ttiUsername=' + self.uiCallback.uName + ' && export ttiPassword=' + self.uiCallback.pWord + ' && export TTI_GAMESERVER=' + GAME_SERVER + ' && cd src/ && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie
+        else:
+            cmd_00 = 'set ttiUsername=' + self.uiCallback.uName + ' && set ttiPassword=' + self.uiCallback.pWord + ' && set TTI_GAMESERVER=' + GAME_SERVER + ' && cd "src" && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie
 
-        cmd_00 = (CMD_00 % (self.uiCallback.uName, self.uiCallback.pWord, cookie, GAME_SERVER, self.python_path))
 
         print (cmd_00)
         # Before we run the command lets set the username variables to null
         self.uiCallback.uName = False
         self.uiCallback.pWord = False
+        cookie = False
 
         subprocess.call(cmd_00, shell=True)
 

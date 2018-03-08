@@ -99,11 +99,5 @@ if CURRENT_PLATFORM == 'Linux':
 else:
     PYTHON_PATH = '\panda3d\python\ppython.exe'
 
-### Game starting commands ###
-if CURRENT_PLATFORM == 'Linux':
-    CMD_00 = 'export ttiUsername=%s && export ttiPassword=%s && export TTI_PLAYCOOKIE=%s && export TTI_GAMESERVER=%s && cd src/ && %s -O -m toontown.toonbase.ClientStart'
-else:
-    CMD_00 = 'set ttiUsername=%s && set ttiPassword=%s && set TTI_PLAYCOOKIE=%s && set TTI_GAMESERVER=%s && cd "src" && %s -O -m toontown.toonbase.ClientStart'
-
 
 
