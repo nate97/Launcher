@@ -67,12 +67,16 @@ class LinkParser():
                     # We don't know what happend?! set it to base directory!!!
                     file_path = BASE_FILEPATH_S + file_name
 
+                # Grab file's path to the folder without the extension name and add current dir slash
+                file_path_no_extension = file_name.rsplit('.', 1)
+                file_path_no_extension = BASE_FILEPATH_S + file_path_no_extension[0]
+
                 # We need to append all files to the download list
-                self.download_list.append([file_url, file_path, file_name, file_format, file_r_hash])
+                self.download_list.append([file_url, file_path, file_name, file_format, file_r_hash, file_path_no_extension])
 
                 # The file is a special case so we will append to the unzip_list to deal with later
                 if file_format == ZIPPED_FILE:
-                    self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash])
+                    self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash, file_path_no_extension])
 
             else:
                 print (LINK_INVALID % file_name)

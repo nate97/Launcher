@@ -20,12 +20,12 @@ class Launcher(LinkParser, GameStarter):
         GameStarter.__init__(self)
     
 
+
     def checkCredentials(self):
-        print (self.uiCallback.uName)
         if self.uiCallback.uName and self.uiCallback.pWord:
             self.updateManager()
         else:
-            self.uiCallback.enterCredentials()
+            self.uiCallback.setEnterCredsUI()
 
 
 
@@ -35,7 +35,7 @@ class Launcher(LinkParser, GameStarter):
         self.refreshUI()
 
         # Build our folder structure FIRST
-        self.createDirectory(BASE_FILEPATH_S)
+        self.createDirectory(RESOURCE_FILEPATH_S)
         # Downlaod the resource update file
         self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
         # Extract the data from the resource file 
@@ -54,6 +54,8 @@ class Launcher(LinkParser, GameStarter):
         # Extract any archived files we may have
         self.archiveManager()
 
+        self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
+        self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
         return
 
 
@@ -70,6 +72,7 @@ class Launcher(LinkParser, GameStarter):
                 file_name = lists[2]
                 file_type = lists[3]
                 file_r_hash = lists[4]
+                file_path_no_extension = lists[5]
 
                 # Have we downloaded the file or not?
                 if os.path.exists(file_path):
@@ -87,12 +90,12 @@ class Launcher(LinkParser, GameStarter):
                          if not self.downloadFile(file_name, file_path, file_url):
                             self.setFailedLauncher()
                             break
-                    else:
-                        # The file was up to date!
-                        print (FILE_CURRENT % file_name)
 
-                        if ZIPPED_FILE in lists:
-                        # If the file is up to date, remove it from the unzip list
+                    elif file_l_hash == file_r_hash:
+                        # The file was up to date!
+                        if ZIPPED_FILE in lists and os.path.exists(file_path_no_extension):
+                        # If the file is up to date, and the directory already exists,
+                        # remove the file from the list to be extracted
                             self.unzip_list.remove(lists)
 
                 else:
@@ -105,7 +108,7 @@ class Launcher(LinkParser, GameStarter):
                 self.uiCallback.countProgress()
                 self.refreshUI()
 
-            return
+            return True
 
 
 
@@ -115,18 +118,26 @@ class Launcher(LinkParser, GameStarter):
             self.ui.launcher_status.setText(DOWNLOADING_FILE % file_name)
             self.refreshUI()
             print (DOWNLOADING_FILE % file_name)
-
-            response = requests.get(file_url)
-            with open(file_path, 'wb') as file_data:  
-                file_data.write(response.content)
             
+            response = requests.get(file_url, stream=True)
+            handle = open(file_path, "wb")
+            for chunk in response.iter_content(chunk_size=512):
+
+                # Call back so that the UI doesn't freeze
+                self.refreshUI()
+
+                if chunk:  # filter out keep-alive new chunks
+                    handle.write(chunk)
+
+            self.ui.launcher_status.setText(DOWNLOAD_COMPLETE_FILE % file_name)
+            self.refreshUI()
             print (DOWNLOAD_COMPLETE_FILE % file_name)
 
         except:
-            # PUT A CALLBACK HERE TO CANCEL THE UPDATE PROCESS!!!
+            # CALL BACK AND KILL THE PROCESS
             print (FILE_DOWNLOAD_FAILED % file_name)
             return False
-        return
+        return True
 
 
 
@@ -141,12 +152,14 @@ class Launcher(LinkParser, GameStarter):
                 file_url = lists[0]
                 file_path = lists[1]
                 file_name = lists[2]
-                file_r_hash = lists[3]
+                file_type = lists[3]
+                file_r_hash = lists[4]
+                file_name_no_extension = lists[5]
 
                 if not self.extractArchive(file_name):
                     self.setFailedLauncher()
                     break
-        return
+        return True
 
 
 
@@ -160,12 +173,15 @@ class Launcher(LinkParser, GameStarter):
             zip_data = zipfile.ZipFile(file_name)
             zip_data.extractall(directory)
             zip_data.close()
+
+            self.ui.launcher_status.setText(ARCHIVE_COMPLETE % file_name)
+            self.refreshUI()
             print (ARCHIVE_COMPLETE % file_name)
         except:
             # PUT CALL BACK HERE TO CANCEL THE UPDATE PROCESS!!!
             print (ARCHIVE_FAILED % file_name)
             return False
-        return
+        return True
 
 
 
@@ -193,13 +209,14 @@ class Launcher(LinkParser, GameStarter):
 
 
 
+    # This is so we can make calls to the UI class
     def setUICallbacks(self, callback):
         self.uiCallback = callback
         self.ui = callback.ui
 
 
 
-    # CALL BACK THE UI
+    # Calls the function to update the UI while we're processing data
     def refreshUI(self):
         self.uiCallback.APP.processEvents()
 

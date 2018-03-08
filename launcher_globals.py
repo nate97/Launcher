@@ -43,9 +43,9 @@ RESOURCE_FILEPATH_D = 'resource'
 
 if CURRENT_PLATFORM == 'Linux':
     BASE_FILEPATH_S = './'
-    RESOURCE_FILEPATH_S = '/resources/'
+    RESOURCE_FILEPATH_S = './resources/'
 else:
-    BASE_FILEPATH_S = ''
+    BASE_FILEPATH_S = '.\\'
     RESOURCE_FILEPATH_S = 'resources\\'
 
 
@@ -74,6 +74,7 @@ MD5_FAILED = 'Failed retriving MD5 hash for %s !'
 
 LAUNCHER_STATE_WAITING = 'Please login...'
 LAUNCHER_STATE_UPDATING = 'Please wait...'
+LAUNCHER_STATE_LAUNCHING = 'Have fun!'
 
 LAUNCHER_STATUS_LOGIN = 'Welcome!'
 LAUNCHER_STATUS_GIVE_INPUT = 'You must enter a username and password.'

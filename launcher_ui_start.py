@@ -33,7 +33,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     def setCredentials(self):
         self.uName = self.ui.user_input.text()
         self.pWord = self.ui.pass_input.text()
-
+        # Check to see if we have credentials
         self.Launcher.checkCredentials()
 
 
@@ -72,7 +72,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
 
 
-    def enterCredentials(self):
+    def setEnterCredsUI(self):
         self.ui.launcher_status.setText(LAUNCHER_STATUS_GIVE_INPUT)
 
 
@@ -81,15 +81,14 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.counter = 0
         self.ui.progress_bar.setValue(self.counter)
         complete = len(self.Launcher.download_list)
-        print (complete)
         self.ui.progress_bar.setMaximum(complete)
 
 
 
     def countProgress(self):
-        print (self.counter)
+        self.counter = self.counter +1
         self.ui.progress_bar.setValue(self.counter)
-        self.counter +1
+
 
 
 def main():
