@@ -10,7 +10,6 @@ from game_starter import GameStarter
 from link_parser import LinkParser
 
 
-
 class Launcher(LinkParser, GameStarter):
 
     def __init__(self):
@@ -21,13 +20,11 @@ class Launcher(LinkParser, GameStarter):
         GameStarter.__init__(self)
     
 
-
     def checkCredentials(self):
         if self.uiCallback.uName and self.uiCallback.pWord:
             self.updateManager()
         else:
             self.uiCallback.setEnterCredsUI()
-
 
 
     def updateManager(self):
@@ -38,7 +35,7 @@ class Launcher(LinkParser, GameStarter):
         # Build our folder structure FIRST
         self.createDirectory(RESOURCE_FILEPATH_S)
         # Downlaod the resource update file
-        self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
+        #self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
         # Extract the data from the resource file 
         self.extractLinks(RESOURCE_FILE)
 
@@ -66,7 +63,6 @@ class Launcher(LinkParser, GameStarter):
         return
 
 
-
     def downloadManager(self):
         if self.download_list:
             # We have files to download
@@ -77,16 +73,17 @@ class Launcher(LinkParser, GameStarter):
                 file_url = lists[0]
                 file_path = lists[1]
                 file_name = lists[2]
-                file_type = lists[3]
-                file_r_hash = lists[4]
-                file_path_no_extension = lists[5]
+                file_extension = lists[3]
+                file_archive = lists[4]
+                file_r_hash = lists[5]
+                file_path_extension = file_path + file_extension
 
                 # Have we downloaded the file or not?
-                if os.path.exists(file_path):
+                if os.path.exists(file_path_extension):
                     # File already exists, lets check the hash
 
                     # Get local hash of the file
-                    file_l_hash = self.getMD5Sum(file_path)
+                    file_l_hash = self.getMD5Sum(file_path_extension)
                     if not file_l_hash:
                         self.setFailedLauncher()
                         break
@@ -94,13 +91,13 @@ class Launcher(LinkParser, GameStarter):
                     # Check if the file hashes match
                     if file_l_hash != file_r_hash:
                         # Hashes didnt match, download it
-                         if not self.downloadFile(file_name, file_path, file_url):
+                         if not self.downloadFile(file_name, file_path_extension, file_url):
                             self.setFailedLauncher()
                             break
 
                     elif file_l_hash == file_r_hash:
                         # The file was up to date!
-                        if ZIPPED_FILE in lists and os.path.exists(file_path_no_extension):
+                        if file_archive == True and os.path.exists(file_path):
                         # If the file is up to date, and the directory already exists,
                         # remove the file from the list to be extracted
                             self.unzip_list.remove(lists)
@@ -109,7 +106,7 @@ class Launcher(LinkParser, GameStarter):
 
                 else:
                     # The file does not exist, we MUST download it
-                    if not self.downloadFile(file_name, file_path, file_url):
+                    if not self.downloadFile(file_name, file_path_extension, file_url):
                         self.setFailedLauncher()
                         break
 
@@ -118,7 +115,6 @@ class Launcher(LinkParser, GameStarter):
                 self.refreshUI()
 
             return True
-
 
 
     # Download a file with the requests library
@@ -149,7 +145,6 @@ class Launcher(LinkParser, GameStarter):
         return True
 
 
-
     def archiveManager(self):
         if self.unzip_list:
             # We have files to extract...
@@ -161,11 +156,12 @@ class Launcher(LinkParser, GameStarter):
                 file_url = lists[0]
                 file_path = lists[1]
                 file_name = lists[2]
-                file_type = lists[3]
-                file_r_hash = lists[4]
-                file_name_no_extension = lists[5]
+                file_extension = lists[3]
+                file_archive = lists[4]
+                file_r_hash = lists[5]
+                file_path_extension = file_path + file_extension
 
-                if not self.extractArchive(file_name):
+                if not self.extractArchive(file_path_extension):
                     self.setFailedLauncher()
                     break
 
@@ -174,7 +170,6 @@ class Launcher(LinkParser, GameStarter):
                 self.refreshUI()
 
         return True
-
 
 
     # Extract a file
@@ -198,13 +193,11 @@ class Launcher(LinkParser, GameStarter):
         return True
 
 
-
     # Creates directory structure if it hasn't already been built, or deleted
     def createDirectory(self, directory):
         if not os.path.exists(directory):
             os.makedirs(directory)
         return
-
 
 
     # Gets the local MD5 hash of a file
@@ -222,18 +215,15 @@ class Launcher(LinkParser, GameStarter):
             return False
 
 
-
     # This is so we can make calls to the UI class
     def setUICallbacks(self, callback):
         self.uiCallback = callback
         self.ui = callback.ui
 
 
-
     # Calls the function to update the UI while we're processing data
     def refreshUI(self):
         self.uiCallback.APP.processEvents()
-
 
 
     # Set our variables the the defaults since the update failed
@@ -244,11 +234,8 @@ class Launcher(LinkParser, GameStarter):
         self.setFailedUI()
 
 
-
     # Tell the UI that updates have failed
     def setFailedUI(self):
         self.uiCallback.setFailedUI()
         self.refreshUI()
-
-
 

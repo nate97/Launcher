@@ -30,13 +30,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.pushButton.clicked.connect(self.setCredentials)
 
 
-
     def setCredentials(self):
         self.uName = str(self.ui.user_input.text())
         self.pWord = str(self.ui.pass_input.text())
         # Check to see if we have credentials
         self.Launcher.checkCredentials()
-
 
 
     def setDefaultUI(self):
@@ -51,13 +49,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.progress_bar.setMaximum(100)
 
 
-
     def setUpdateUI(self):
         self.ui.launcher_state.setText(LAUNCHER_STATE_UPDATING)
         self.ui.user_input.setDisabled(True)
         self.ui.pass_input.setDisabled(True)
         self.ui.pushButton.setEnabled(False)
-
 
 
     # Reset all of our local variables to zero and reset the UI
@@ -73,10 +69,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.progress_bar.setMaximum(100)
 
 
-
     def setEnterCredsUI(self):
         self.ui.launcher_status.setText(LAUNCHER_STATUS_GIVE_INPUT)
-
 
 
     def setProgressZero(self):
@@ -86,17 +80,14 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.progress_bar.setMaximum(self.complete_progress )
 
 
-
     def countProgress(self):
         self.counter = self.counter +1
         self.ui.progress_bar.setValue(self.counter)
 
 
-
     def subtractProgressZIP(self):
         self.complete_progress = self.complete_progress -1
         self.ui.progress_bar.setMaximum(self.complete_progress)
-
 
 
 def main():
@@ -106,6 +97,6 @@ def main():
     sys.exit(app.exec_())
 
 
-
 if __name__ == "__main__":
     main()
+

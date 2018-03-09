@@ -29,7 +29,7 @@ class Ui_LauncherWindow(object):
         self.login = QtWidgets.QFrame(self.centralwidget)
         self.login.setGeometry(QtCore.QRect(50, 50, 701, 391))
         self.login.setStyleSheet("background: #f9f9f9;\n"
-"background-color: rgba(249,249,249, 0.82);\n"
+"background-color: rgba(249,249,249, 0.7);\n"
 "border-radius: 25;\n"
 "border: 5px solid #cacaca;\n"
 "padding: 5px;")
@@ -45,7 +45,9 @@ class Ui_LauncherWindow(object):
 "border: 2px solid #cacaca;\n"
 "padding: 0px;\n"
 "font: 12pt \"Arial\";")
+        self.pass_input.setText("")
         self.pass_input.setFrame(False)
+        self.pass_input.setEchoMode(QtWidgets.QLineEdit.Password)
         self.pass_input.setObjectName("pass_input")
         self.user_input = QtWidgets.QLineEdit(self.login)
         self.user_input.setGeometry(QtCore.QRect(40, 90, 191, 41))
@@ -164,13 +166,3 @@ class Ui_LauncherWindow(object):
         self.pushButton.setText(_translate("LauncherWindow", "Play Now!"))
 
 import resources_rc
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    LauncherWindow = QtWidgets.QMainWindow()
-    ui = Ui_LauncherWindow()
-    ui.setupUi(LauncherWindow)
-    LauncherWindow.show()
-    sys.exit(app.exec_())
-

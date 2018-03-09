@@ -9,8 +9,11 @@ TESTING_NF = True
 LOCAL_GAME_DOWNLOAD = True
 LOCAL_GAME_SERVER = False
 
+
 CURRENT_PLATFORM = platform.system()
+PLATFORM_ALL = 'all'
 CURRENT_PATH = os.getcwd()
+
 
 if TESTING_NF:
     print ('Host operating system: ' + CURRENT_PLATFORM)
@@ -23,24 +26,15 @@ if TESTING_NF:
 
 ### DEBUGGING PURPOSES FOR LOCAL AND REMOTE FILE NAMES ###
 if LOCAL_GAME_DOWNLOAD:
-    RESOURCE_FILE = 'local_file_links.txt'
+    RESOURCE_FILE = 'RESOURCE_LINKS.yaml'
     RESOURCE_LINK = 'http://10.0.0.29/index.php/s/YEpPZvza2jfISz1/download'
 else:
-    RESOURCE_FILE = 'remote_file_links.txt'
+    RESOURCE_FILE = 'RESOURCE_LINKS.yaml'
     RESOURCE_LINK = 'https://cloud.com/file1.txt'
-
-### PARSE VARIABLES ###
-VALID_LINE = 'link'
-DILIMETER = ' | '
-OCCURENCE = 5
-
-### FILE TYPE VARIABLES ###
-ZIPPED_FILE = 'archive'
-NORMAL_FILE = 'file'
 
 ### DECLERATION TO PATH ###
 BASE_FILEPATH_D = 'base'
-RESOURCE_FILEPATH_D = 'resource'
+RESOURCE_FILEPATH_D = 'resources'
 
 if CURRENT_PLATFORM == 'Linux':
     BASE_FILEPATH_S = './'

@@ -1,5 +1,5 @@
 import os
-
+import yaml
 from launcher_globals import *
 
 
@@ -13,89 +13,62 @@ class LinkParser():
         self.unzip_list = []
 
 
+    # Extract the link data and put the dictonaries into a list form the YAML file
+    def extractLinks(self, file_name):
+        # Read the YAML file
+        with open(file_name, 'r') as stream:
+            data_loaded = yaml.load(stream)
 
-    # Extract links from our links file
-    def extractLinks(self, file_name, directory=''):
-        file_path = directory + file_name
-        file_data = open(file_path, 'r')
-        lines = file_data.readlines()
-        file_data.close()
+        for file_data in data_loaded:
+            link_line = (data_loaded[file_data])
 
-        # Iterate through the lines in the file
-        for line in range(len(lines)):
+            self.link_data.append(link_line)
 
+            # Keep the UI active
             self.refreshUI()
 
-            # Get single line out of our links file
-            single_line = lines[line]
 
-            # If the line has the word link in it, we will append it to the links list
-            if VALID_LINE in single_line:
-                # Get rid of newline dilimeters # HACKY! #
-                single_line = single_line.split('\n')[0].split('\r')[0]
-                # Append our link data to the list
-                self.link_data.append(single_line)
-        return
-
-
-
-    # This function goes through each item in the links list and parses the data out appropriatly
+    # Parses out the data out of dictionaries inside of our list
     def parseLinks(self):
-        # Loop through each item in our list
         for link_data in self.link_data:
 
-            self.refreshUI()
-
-            # Split out the data into a list so we can extract the individual parts
-            link_data = self.stringSplitter(link_data, DILIMETER, OCCURENCE)
-
             if link_data:
-            # If the data isn't corrupted, continue
-                file_url = link_data[1]
-                file_path_declar = link_data[2]
-                file_name = link_data[3]
-                file_format = link_data[4]
-                file_r_hash = link_data[5]
+            # If the data isn't corrupted, continuing
+                # This is a special case, and will dictate if we continue further with the file we're dealing with
+                file_platform = (link_data['platform'])
 
-                # file_path_declar is a special case, the file only provides a flag as to what the directory should be, not the actual directory
-                # So we will convert the flag into a directory string, and then go ahead and combine the directroy and file_name
-                if file_path_declar == BASE_FILEPATH_D:
-                    file_path = BASE_FILEPATH_S + file_name 
-                elif file_path_declar == RESOURCE_FILEPATH_D:
-                    file_path = RESOURCE_FILEPATH_S + file_name
-                else:
-                    # We don't know what happend?! set it to base directory!!!
-                    file_path = BASE_FILEPATH_S + file_name
+                # If the file is for our current platform go ahead and process and apend it to the list
+                if file_platform == CURRENT_PLATFORM or PLATFORM_ALL:
+                    # The file is for our platform, continuing
+                    file_url = (link_data['url'])
+                    file_path_declar = (link_data['path'])
+                    file_name = (link_data['name'])
+                    file_extension = (link_data['extension'])
+                    # File archive can be true or false
+                    file_archive = (link_data['archive'])
+                    file_hash =  (link_data['hash'])
 
-                # Grab file's path to the folder without the extension name and add current dir slash
-                file_path_no_extension = file_name.rsplit('.', 1)
-                file_path_no_extension = BASE_FILEPATH_S + file_path_no_extension[0]
+                    # file_path_declar is a special case, the file only provides a flag to what the directory should be, not an actual path
+                    # Ee will convert the flag into a directory string, and then combine the directroy and file_name
+                    if file_path_declar == BASE_FILEPATH_D:
+                        file_path = BASE_FILEPATH_S + file_name
+                    elif file_path_declar == RESOURCE_FILEPATH_D:
+                        file_path = RESOURCE_FILEPATH_S + file_name
+                    else:
+                        # We don't know what happend?! set it to base directory!!!
+                        file_path = BASE_FILEPATH_S + file_name
 
-                # We need to append all files to the download list
-                self.download_list.append([file_url, file_path, file_name, file_format, file_r_hash, file_path_no_extension])
+                    # We need to append all files to the download list
+                    self.download_list.append(
+                        [file_url, file_path, file_name, file_extension, file_archive, file_hash])
 
-                # The file is a special case so we will append to the unzip_list to deal with later
-                if file_format == ZIPPED_FILE:
-                    self.unzip_list.append([file_url, file_path, file_name, file_format, file_r_hash, file_path_no_extension])
+                    # The file is a special case so we will append to the unzip_list to deal with later
+                    if file_archive == True:
+                        self.unzip_list.append(
+                            [file_url, file_path, file_name, file_extension, file_archive, file_hash])
 
             else:
-                print (LINK_INVALID % file_name)
+                print (LINK_INVALID % link_data)
                 self.setFailedLauncher()
                 break
-
-
-
-    # Split string on specified dilimeter X amount of times
-    def stringSplitter(self, link_data, delimimeter, occurrence):
-        # This is incase something is wrong with the line...
-        items_in_line = link_data.count(delimimeter)
-        if items_in_line == occurrence:
-            link_data = link_data.split(delimimeter, 5)
-            return link_data
-
-        else:
-            # Something is wrong with the line...
-            return False
-
-
 

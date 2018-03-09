@@ -1,0 +1,29 @@
+
+link00:
+    platform: 'all'
+    url: 'http://10.0.0.29/index.php/s/UFJvkTzj1c5ZDy9/download'
+    path: 'resources'
+    name: 'phase_3'
+    extension: '.mf'
+    archive: False
+    hash: '53e88c850197400bd4f340059149dc3f'
+
+
+link01:
+    platform: 'all'
+    url: 'http://10.0.0.29/index.php/s/8m1rLhhTMamz2Ij/download'
+    path: 'base'
+    name: 'src'
+    extension: '.zip'
+    archive: True
+    hash: '4b35894d915e6ab1749727f0443dab91'
+
+
+link02:
+    platform: 'all'
+    url: 'http://10.0.0.29/index.php/s/S8nBE95byudqYuA/download'
+    path: 'base'
+    name: 'panda3d'
+    extension: '.zip'
+    archive: True
+    hash: 'c97fec3879af9039892bdc5bdc58fdb4'

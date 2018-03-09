@@ -29,8 +29,6 @@ class GameStarter():
         else:
             cmd_00 = 'set ttiUsername=' + self.uiCallback.uName + ' && set ttiPassword=' + self.uiCallback.pWord + ' && set TTI_GAMESERVER=' + GAME_SERVER + ' && cd "src" && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie
 
-
-        print (cmd_00)
         # Before we run the command lets set the username variables to null
         self.uiCallback.uName = False
         self.uiCallback.pWord = False
