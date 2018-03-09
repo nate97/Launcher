@@ -18,7 +18,9 @@ class Launcher(LinkParser, GameStarter):
         # Initalize our objects
         LinkParser.__init__(self)
         GameStarter.__init__(self)
-    
+
+        self.launch = False    
+
 
     def checkCredentials(self):
         if self.uiCallback.uName and self.uiCallback.pWord:
@@ -28,39 +30,46 @@ class Launcher(LinkParser, GameStarter):
 
 
     def updateManager(self):
-        # Setup the UI for the update in progress screen
-        self.uiCallback.setUpdateUI()
-        self.refreshUI()
 
-        # Build our folder structure FIRST
-        self.createDirectory(RESOURCE_FILEPATH_S)
-        # Downlaod the resource update file
-        #self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
-        # Extract the data from the resource file 
-        self.extractLinks(RESOURCE_FILE)
+        # Honestly this is lazy but whatever.
+        try:
+            # Setup the UI for the update in progress screen
+            self.uiCallback.setUpdateUI()
+            self.refreshUI()
 
-        # Parse through the links and put them into the appropriate lists
-        self.parseLinks()
+            # Build our folder structure FIRST
+            self.createDirectory(RESOURCE_FILEPATH_S)
+            # Downlaod the resource update file
+            #self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
+            # Extract the data from the resource file 
+            self.extractLinks(RESOURCE_FILE)
 
-        # Update the UI's progress bar AFTER the file list has been populated
-        self.uiCallback.setProgressZero()
-        self.refreshUI()
+            # Parse through the links and put them into the appropriate lists
+            self.parseLinks()
 
-        # Start the download manager
-        self.downloadManager()
-        
-        # Extract any archived files we may have
-        self.archiveManager()
+            # Update the UI's progress bar AFTER the file list has been populated
+            self.uiCallback.setProgressZero()
+            self.refreshUI()
 
-        self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
-        self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
-        self.refreshUI()
+            # Start the download manager
+            self.downloadManager()
+            
+            # Extract any archived files we may have
+            self.archiveManager()
 
-        self.launchGame()
+            self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
+            self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
+            self.refreshUI()
 
-        sys.exit()
+            self.launch = True
 
-        return
+        except:
+            self.setFailedLauncher()
+            self.launch = False
+
+        if self.launch:
+            self.launchGame()
+            sys.exit()
 
 
     def downloadManager(self):
@@ -159,9 +168,11 @@ class Launcher(LinkParser, GameStarter):
                 file_extension = lists[3]
                 file_archive = lists[4]
                 file_r_hash = lists[5]
+                directory = lists[6]
                 file_path_extension = file_path + file_extension
 
-                if not self.extractArchive(file_path_extension):
+
+                if not self.extractArchive(file_path_extension, file_name, directory):
                     self.setFailedLauncher()
                     break
 
@@ -173,13 +184,15 @@ class Launcher(LinkParser, GameStarter):
 
 
     # Extract a file
-    def extractArchive(self, file_name, directory=''):
+    def extractArchive(self, file_path, file_name, directory):
+        print (directory)
+        print ("WHAT???")
         try:
             self.ui.launcher_status.setText(ARCHIVE_EXTRACTING % file_name)
             self.refreshUI()
             print (ARCHIVE_EXTRACTING % file_name)
 
-            zip_data = zipfile.ZipFile(file_name)
+            zip_data = zipfile.ZipFile(file_path)
             zip_data.extractall(directory)
             zip_data.close()
 

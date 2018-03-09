@@ -26,8 +26,8 @@ if TESTING_NF:
 
 ### DEBUGGING PURPOSES FOR LOCAL AND REMOTE FILE NAMES ###
 if LOCAL_GAME_DOWNLOAD:
-    RESOURCE_FILE = 'RESOURCE_LINKS.yaml'
-    RESOURCE_LINK = 'http://10.0.0.29/index.php/s/YEpPZvza2jfISz1/download'
+    RESOURCE_FILE = 'LOCAL_RESOURCE_LINKS.yaml'
+    RESOURCE_LINK = 'http://10.0.0.29/index.php/s/95etFJlljKx7Fj5/download'
 else:
     RESOURCE_FILE = 'RESOURCE_LINKS.yaml'
     RESOURCE_LINK = 'https://cloud.com/file1.txt'

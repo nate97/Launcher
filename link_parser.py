@@ -32,8 +32,9 @@ class LinkParser():
     def parseLinks(self):
         for link_data in self.link_data:
 
-            if link_data:
+            try:
             # If the data isn't corrupted, continuing
+
                 # This is a special case, and will dictate if we continue further with the file we're dealing with
                 file_platform = (link_data['platform'])
 
@@ -49,25 +50,29 @@ class LinkParser():
                     file_hash =  (link_data['hash'])
 
                     # file_path_declar is a special case, the file only provides a flag to what the directory should be, not an actual path
-                    # Ee will convert the flag into a directory string, and then combine the directroy and file_name
+                    # we will convert the flag into a directory string, and then combine the directroy and file_name
+                    # We will also define just the path to the file
                     if file_path_declar == BASE_FILEPATH_D:
                         file_path = BASE_FILEPATH_S + file_name
+                        file_dir = BASE_FILEPATH_S
                     elif file_path_declar == RESOURCE_FILEPATH_D:
                         file_path = RESOURCE_FILEPATH_S + file_name
+                        file_dir = RESOURCE_FILEPATH_D
                     else:
                         # We don't know what happend?! set it to base directory!!!
                         file_path = BASE_FILEPATH_S + file_name
+                        file_dir = BASE_FILEPATH_S
 
                     # We need to append all files to the download list
                     self.download_list.append(
-                        [file_url, file_path, file_name, file_extension, file_archive, file_hash])
+                        [file_url, file_path, file_name, file_extension, file_archive, file_hash, file_dir])
 
                     # The file is a special case so we will append to the unzip_list to deal with later
                     if file_archive == True:
                         self.unzip_list.append(
-                            [file_url, file_path, file_name, file_extension, file_archive, file_hash])
+                            [file_url, file_path, file_name, file_extension, file_archive, file_hash, file_dir])
 
-            else:
+            except:
                 print (LINK_INVALID % link_data)
                 self.setFailedLauncher()
                 break
