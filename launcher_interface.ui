@@ -54,7 +54,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">background: #f9f9f9;
-background-color: rgba(249,249,249, 0.82);
+background-color: rgba(249,249,249, 0.7);
 border-radius: 25;
 border: 5px solid #cacaca;
 padding: 5px;</string>
@@ -87,8 +87,14 @@ border: 2px solid #cacaca;
 padding: 0px;
 font: 12pt &quot;Arial&quot;;</string>
      </property>
+     <property name="text">
+      <string/>
+     </property>
      <property name="frame">
       <bool>false</bool>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
      </property>
      <property name="placeholderText">
       <string>password</string>
