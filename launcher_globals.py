@@ -32,6 +32,8 @@ else:
     RESOURCE_FILE = 'RESOURCE_LINKS.yaml'
     RESOURCE_LINK = 'https://cloud.com/file1.txt'
 
+RESOURCE_NAME = 'resource-links'
+
 ### DECLERATION TO PATH ###
 BASE_FILEPATH_D = 'base'
 RESOURCE_FILEPATH_D = 'resources'

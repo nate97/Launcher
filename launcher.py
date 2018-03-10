@@ -30,46 +30,43 @@ class Launcher(LinkParser, GameStarter):
 
 
     def updateManager(self):
+        # Setup the UI for the update in progress screen
+        self.uiCallback.setUpdateUI()
+        self.refreshUI()
 
-        # Honestly this is lazy but whatever.
-        try:
-            # Setup the UI for the update in progress screen
-            self.uiCallback.setUpdateUI()
-            self.refreshUI()
+        # Build our folder structure FIRST
+        self.createDirectory(RESOURCE_FILEPATH_S)
 
-            # Build our folder structure FIRST
-            self.createDirectory(RESOURCE_FILEPATH_S)
-            # Downlaod the resource update file
-            #self.downloadFile(RESOURCE_FILE, RESOURCE_FILE, RESOURCE_LINK)
-            # Extract the data from the resource file 
-            self.extractLinks(RESOURCE_FILE)
+        # Downlaod the resource update file
+        self.downloadFile(RESOURCE_NAME, RESOURCE_FILE, RESOURCE_LINK)
 
-            # Parse through the links and put them into the appropriate lists
-            self.parseLinks()
+        # Extract the data from the resource file 
+        self.extractLinks(RESOURCE_FILE)
 
-            # Update the UI's progress bar AFTER the file list has been populated
-            self.uiCallback.setProgressZero()
-            self.refreshUI()
+        # Parse through the links and put them into the appropriate lists
+        self.parseLinks()
 
-            # Start the download manager
-            self.downloadManager()
-            
-            # Extract any archived files we may have
-            self.archiveManager()
+        # Update the UI's progress bar AFTER the file list has been populated
+        self.uiCallback.setProgressZero()
+        self.refreshUI()
 
-            self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
-            self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
-            self.refreshUI()
+        # Start the download manager
+        self.downloadManager()
+        
+        # Extract any archived files we may have
+        self.archiveManager()
 
-            self.launch = True
+        self.uiCallback.ui.launcher_status.setText(UPDATE_COMPLETE)
+        self.uiCallback.ui.launcher_state.setText(LAUNCHER_STATE_LAUNCHING)
+        self.refreshUI()
 
-        except:
-            self.setFailedLauncher()
-            self.launch = False
+        self.launch = True
 
-        if self.launch:
-            self.launchGame()
-            sys.exit()
+        #self.setFailedLauncher()
+        #self.launch = False
+
+        self.launchGame()
+        sys.exit()
 
 
     def downloadManager(self):
