@@ -5,7 +5,7 @@ import os
 ### DEBUG VARIABLE ###
 
 TESTING_NF = False
-LOCAL_GAME_DOWNLOAD = True
+LOCAL_GAME_DOWNLOAD = False
 LOCAL_GAME_SERVER = False
 
 
