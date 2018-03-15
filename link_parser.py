@@ -39,7 +39,9 @@ class LinkParser():
                 file_platform = (link_data['platform'])
 
                 # If the file is for our current platform go ahead and process and apend it to the list
-                if file_platform == CURRENT_PLATFORM or PLATFORM_ALL:
+                if file_platform == CURRENT_PLATFORM or file_platform == PLATFORM_ALL:
+
+                    print (file_platform)
                     # The file is for our platform, continuing
                     file_url = (link_data['url'])
                     file_path_declar = (link_data['path'])
