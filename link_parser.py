@@ -41,7 +41,6 @@ class LinkParser():
                 # If the file is for our current platform go ahead and process and apend it to the list
                 if file_platform == CURRENT_PLATFORM or file_platform == PLATFORM_ALL:
 
-                    print (file_platform)
                     # The file is for our platform, continuing
                     file_url = (link_data['url'])
                     file_path_declar = (link_data['path'])
@@ -75,7 +74,8 @@ class LinkParser():
                             [file_url, file_path, file_name, file_extension, file_archive, file_hash, file_dir])
 
             except:
-                print (LINK_INVALID % link_data)
+                if TESTING_NF:
+                    print (LINK_INVALID % link_data)
                 self.setFailedLauncher()
                 break
 

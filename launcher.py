@@ -13,7 +13,8 @@ from link_parser import LinkParser
 class Launcher(LinkParser, GameStarter):
 
     def __init__(self):
-        print ('Starting launcher!')
+        if TESTING_NF:
+            print ('Starting launcher!')
   
         # Initalize our objects
         LinkParser.__init__(self)
@@ -128,7 +129,8 @@ class Launcher(LinkParser, GameStarter):
         try:
             self.ui.launcher_status.setText(DOWNLOADING_FILE % file_name)
             self.refreshUI()
-            print (DOWNLOADING_FILE % file_name)
+            if TESTING_NF:
+                print (DOWNLOADING_FILE % file_name)
             
             response = requests.get(file_url, stream=True)
             handle = open(file_path, "wb")
@@ -142,11 +144,13 @@ class Launcher(LinkParser, GameStarter):
 
             self.ui.launcher_status.setText(DOWNLOAD_COMPLETE_FILE % file_name)
             self.refreshUI()
-            print (DOWNLOAD_COMPLETE_FILE % file_name)
+            if TESTING_NF:
+                print (DOWNLOAD_COMPLETE_FILE % file_name)
 
         except:
             # CALL BACK AND KILL THE PROCESS
-            print (FILE_DOWNLOAD_FAILED % file_name)
+            if TESTING_NF:
+                print (FILE_DOWNLOAD_FAILED % file_name)
             return False
         return True
 
@@ -182,12 +186,11 @@ class Launcher(LinkParser, GameStarter):
 
     # Extract a file
     def extractArchive(self, file_path, file_name, directory):
-        print (directory)
-        print ("WHAT???")
         try:
             self.ui.launcher_status.setText(ARCHIVE_EXTRACTING % file_name)
             self.refreshUI()
-            print (ARCHIVE_EXTRACTING % file_name)
+            if TESTING_NF:
+                print (ARCHIVE_EXTRACTING % file_name)
 
             zip_data = zipfile.ZipFile(file_path)
             zip_data.extractall(directory)
@@ -195,10 +198,12 @@ class Launcher(LinkParser, GameStarter):
 
             self.ui.launcher_status.setText(ARCHIVE_COMPLETE % file_name)
             self.refreshUI()
-            print (ARCHIVE_COMPLETE % file_name)
+            if TESTING_NF:
+                print (ARCHIVE_COMPLETE % file_name)
         except:
             # PUT CALL BACK HERE TO CANCEL THE UPDATE PROCESS!!!
-            print (ARCHIVE_FAILED % file_name)
+            if TESTING_NF:
+                print (ARCHIVE_FAILED % file_name)
             return False
         return True
 
@@ -221,7 +226,8 @@ class Launcher(LinkParser, GameStarter):
             return hash.hexdigest()
         except:
             # CALL BACK FOR CANCELING THE UPDATE PROGRESS!!!!!
-            print (MD5_FAILED % file_name)
+            if TESTING_NF:
+                print (MD5_FAILED % file_name)
             return False
 
 
