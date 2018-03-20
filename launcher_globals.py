@@ -74,6 +74,7 @@ LAUNCHER_STATE_LAUNCHING = 'Have fun!'
 
 LAUNCHER_STATUS_LOGIN = 'Welcome!'
 LAUNCHER_STATUS_GIVE_INPUT = 'You must enter a username and password.'
+LAUNCHER_STATUS_INVALID_UP = 'You have entered an invalid username or password.'
 LAUNCHER_STATUS_FAILURE = 'Something went wrong while updating.'
 
 

@@ -73,6 +73,10 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.launcher_status.setText(LAUNCHER_STATUS_GIVE_INPUT)
 
 
+    def setInvalidUserPassUI(self):
+        self.ui.launcher_status.setText(LAUNCHER_STATUS_INVALID_UP)
+
+
     def setProgressZero(self):
         self.counter = 0
         self.ui.progress_bar.setValue(self.counter)

@@ -25,6 +25,7 @@ class Launcher(LinkParser, GameStarter):
 
     def checkCredentials(self):
         if self.uiCallback.uName and self.uiCallback.pWord:
+            # Implement mechanism to check to see if account is valid
             self.updateManager()
         else:
             self.uiCallback.setEnterCredsUI()
