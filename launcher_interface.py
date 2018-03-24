@@ -70,26 +70,26 @@ class Ui_LauncherWindow(object):
         self.user_input.setObjectName("user_input")
         self.launcher_state = QtWidgets.QLabel(self.login)
         self.launcher_state.setGeometry(QtCore.QRect(30, 40, 241, 31))
-        font = QtGui.QFont()
-        font.setFamily("Anton")
-        font.setPointSize(14)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.launcher_state.setFont(font)
         self.launcher_state.setStyleSheet("background-color: rgba(249,249,249, 0);\n"
 "border-radius: 5;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
-"font: 14pt \"Anton\";")
+"font: 14pt;\n"
+"src: url(:/fonts/fonts/Anton-Regular.ttf);")
         self.launcher_state.setObjectName("launcher_state")
         self.launcher_status = QtWidgets.QLabel(self.login)
         self.launcher_status.setGeometry(QtCore.QRect(30, 280, 641, 31))
-        self.launcher_status.setStyleSheet("background-color: rgba(249,249,249, 0);\n"
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.launcher_status.setFont(font)
+        self.launcher_status.setStyleSheet("QLabel {\n"
+"background-color: rgba(249,249,249, 0);\n"
 "border-radius: 0;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
-"font: 14pt \"Anton\";")
+"font: 14pt;\n"
+"src: url(:/fonts/fonts/Anton-Regular.ttf);\n"
+"}")
         self.launcher_status.setObjectName("launcher_status")
         self.progress_bar = QtWidgets.QProgressBar(self.login)
         self.progress_bar.setEnabled(True)
@@ -115,13 +115,6 @@ class Ui_LauncherWindow(object):
         self.pushButton = QtWidgets.QPushButton(self.login)
         self.pushButton.setEnabled(True)
         self.pushButton.setGeometry(QtCore.QRect(40, 200, 191, 51))
-        font = QtGui.QFont()
-        font.setFamily("Bowlby One SC")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setItalic(False)
-        font.setWeight(50)
-        self.pushButton.setFont(font)
         self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         self.pushButton.setFocusPolicy(QtCore.Qt.ClickFocus)
         self.pushButton.setStyleSheet("QPushButton { \n"
@@ -130,7 +123,8 @@ class Ui_LauncherWindow(object):
 "    border-radius: 8;\n"
 "    border: 4px solid #cacaca;\n"
 "    padding: 0px;\n"
-"    font: 12pt \"Bowlby One SC\";\n"
+"    font: 12pt;\n"
+"    src: url(:/fonts/fonts/BowlbyOneSC-Regular.ttf);\n"
 "}\n"
 "\n"
 "\n"

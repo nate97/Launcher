@@ -148,21 +148,13 @@ font: 12pt &quot;Arial&quot;;</string>
        <height>31</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>Anton</family>
-       <pointsize>14</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgba(249,249,249, 0);
 border-radius: 5;
 border: 0px solid #ffffff;
 padding: 0px;
-font: 14pt &quot;Anton&quot;;</string>
+font: 14pt;
+src: url(:/fonts/fonts/Anton-Regular.ttf);</string>
      </property>
      <property name="text">
       <string>Launcher state</string>
@@ -177,12 +169,20 @@ font: 14pt &quot;Anton&quot;;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(249,249,249, 0);
+      <string notr="true">QLabel {
+background-color: rgba(249,249,249, 0);
 border-radius: 0;
 border: 0px solid #ffffff;
 padding: 0px;
-font: 14pt &quot;Anton&quot;;</string>
+font: 14pt;
+src: url(:/fonts/fonts/Anton-Regular.ttf);
+}</string>
      </property>
      <property name="text">
       <string>Launcher status</string>
@@ -245,15 +245,6 @@ border-radius: 6;
        <height>51</height>
       </rect>
      </property>
-     <property name="font">
-      <font>
-       <family>Bowlby One SC</family>
-       <pointsize>12</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
@@ -267,7 +258,8 @@ border-radius: 6;
     border-radius: 8;
     border: 4px solid #cacaca;
     padding: 0px;
-	font: 12pt &quot;Bowlby One SC&quot;;
+    font: 12pt;
+    src: url(:/fonts/fonts/BowlbyOneSC-Regular.ttf);
 }
 
 
