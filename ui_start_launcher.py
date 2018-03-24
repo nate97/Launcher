@@ -16,8 +16,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
     
         ### Import UI Fonts ###
         self.fontDB = QtGui.QFontDatabase()
-        self.fontDB.addApplicationFont("./fonts/Anton-Regular.ttf")
-        self.fontDB.addApplicationFont("./fonts/BowlbyOneSC-Regular.ttf")
+        self.fontDB.addApplicationFont(":/fonts/fonts/Anton-Regular.ttf")
+        self.fontDB.addApplicationFont(":/fonts/fonts/BowlbyOneSC-Regular.ttf")
 
         ### Set special case fonts ###
         self.ui.launcher_state.setFont(QtGui.QFont("Anton", 14))
