@@ -14,6 +14,16 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.Launcher = Launcher()
     
+        ### Import UI Fonts ###
+        self.fontDB = QtGui.QFontDatabase()
+        self.fontDB.addApplicationFont(":/fonts/fonts/Anton-Regular.ttf")
+        self.fontDB.addApplicationFont(":/fonts/fonts/BowlbyOneSC-Regular.ttf")
+
+        ### Set special case fonts ###
+        self.ui.launcher_state.setFont(QtGui.QFont("Anton", 14))
+        self.ui.launcher_status.setFont(QtGui.QFont("Anton", 14))
+        self.ui.pushButton.setFont(QtGui.QFont("BowlbyOneSC", 12))
+
         ### UI Globals ###
         self.counter = 0
         self.complete_progress = 0
