@@ -74,8 +74,7 @@ class Ui_LauncherWindow(object):
 "border-radius: 5;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
-"font: 14pt;\n"
-"src: url(:/fonts/fonts/Anton-Regular.ttf);")
+"font: 14pt;")
         self.launcher_state.setObjectName("launcher_state")
         self.launcher_status = QtWidgets.QLabel(self.login)
         self.launcher_status.setGeometry(QtCore.QRect(30, 280, 641, 31))
@@ -87,8 +86,6 @@ class Ui_LauncherWindow(object):
 "border-radius: 0;\n"
 "border: 0px solid #ffffff;\n"
 "padding: 0px;\n"
-"font: 14pt;\n"
-"src: url(:/fonts/fonts/Anton-Regular.ttf);\n"
 "}")
         self.launcher_status.setObjectName("launcher_status")
         self.progress_bar = QtWidgets.QProgressBar(self.login)
@@ -123,9 +120,7 @@ class Ui_LauncherWindow(object):
 "    border-radius: 8;\n"
 "    border: 4px solid #cacaca;\n"
 "    padding: 0px;\n"
-"    font: 12pt;\n"
-"    src: url(:/fonts/fonts/BowlbyOneSC-Regular.ttf);\n"
-"}\n"
+"    font: 12pt;}\n"
 "\n"
 "\n"
 "\n"

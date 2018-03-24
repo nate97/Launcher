@@ -153,8 +153,7 @@ font: 12pt &quot;Arial&quot;;</string>
 border-radius: 5;
 border: 0px solid #ffffff;
 padding: 0px;
-font: 14pt;
-src: url(:/fonts/fonts/Anton-Regular.ttf);</string>
+font: 14pt;</string>
      </property>
      <property name="text">
       <string>Launcher state</string>
@@ -180,8 +179,6 @@ background-color: rgba(249,249,249, 0);
 border-radius: 0;
 border: 0px solid #ffffff;
 padding: 0px;
-font: 14pt;
-src: url(:/fonts/fonts/Anton-Regular.ttf);
 }</string>
      </property>
      <property name="text">
@@ -258,9 +255,7 @@ border-radius: 6;
     border-radius: 8;
     border: 4px solid #cacaca;
     padding: 0px;
-    font: 12pt;
-    src: url(:/fonts/fonts/BowlbyOneSC-Regular.ttf);
-}
+    font: 12pt;}
 
 
 
