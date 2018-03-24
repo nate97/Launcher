@@ -6,18 +6,17 @@ import hashlib
 import requests
 
 from launcher_globals import *
+from launcher_parser import LauncherParser
 from game_starter import GameStarter
-from link_parser import LinkParser
 
-
-class Launcher(LinkParser, GameStarter):
+class Launcher(LauncherParser, GameStarter):
 
     def __init__(self):
         if TESTING_NF:
             print ('Starting launcher!')
   
         # Initalize our objects
-        LinkParser.__init__(self)
+        LauncherParser.__init__(self)
         GameStarter.__init__(self)
 
         self.launch = False    

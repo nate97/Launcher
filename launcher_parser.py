@@ -4,7 +4,7 @@ from launcher_globals import *
 
 
 
-class LinkParser():
+class LauncherParser():
 
     def __init__(self):
         # Parser globals
