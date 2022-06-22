@@ -40,6 +40,11 @@ RESOURCE_FILEPATH_D = 'resources'
 if CURRENT_PLATFORM == 'Linux':
     BASE_FILEPATH_S = './'
     RESOURCE_FILEPATH_S = './resources/'
+
+elif CURRENT_PLATFORM == 'Darwin':
+    BASE_FILEPATH_S = './'
+    RESOURCE_FILEPATH_S = './resources/'
+
 else:
     BASE_FILEPATH_S = '.\\'
     RESOURCE_FILEPATH_S = 'resources\\'
@@ -92,6 +97,8 @@ else:
 ### Relative paths to python install ###
 if CURRENT_PLATFORM == 'Linux':
     PYTHON_PATH = '/usr/bin/python2'
+elif CURRENT_PLATFORM == 'Darwin':
+    PYTHON_PATH = 'python3.10'
 else:
     PYTHON_PATH = '\panda3d\python\ppython.exe'
 
