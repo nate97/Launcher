@@ -24,6 +24,10 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.launcher_status.setFont(QtGui.QFont("Anton", 14))
         self.ui.pushButton.setFont(QtGui.QFont("BowlbyOneSC", 12))
 
+        # Redefine stylesheet
+        self.ui.launcher_state.setStyleSheet("background-color: rgba(249,249,249, 0); color: black; border-radius: 0; border: 0px solid #ffffff; padding: 0px;")
+        self.ui.launcher_status.setStyleSheet("background-color: rgba(249,249,249, 0); color: black; border-radius: 0; border: 0px solid #ffffff; padding: 0px;")
+
         ### UI Globals ###
         self.counter = 0
         self.complete_progress = 0
@@ -55,6 +59,11 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.pass_input.setDisabled(False)
         self.ui.user_input.setText('')
         self.ui.pass_input.setText('')
+
+        # Set stylesheet for user input
+        self.ui.user_input.setStyleSheet("color: black; background: white; border-radius: 8; border: 2px solid #cacaca; padding: 0px; font: 12pt")
+        self.ui.pass_input.setStyleSheet("color: black;background: white; border-radius: 8; border: 2px solid #cacaca; padding: 0px; font: 12pt")
+
         self.ui.progress_bar.setValue(self.counter)
         self.ui.progress_bar.setMaximum(100)
 

@@ -14,6 +14,8 @@ class GameStarter():
 
         if CURRENT_PLATFORM == 'Linux':
             self.python_path = PYTHON_PATH
+        elif CURRENT_PLATFORM == 'Darwin':
+            self.python_path = PYTHON_PATH
         else:
             self.python_path = '"'+ CURRENT_PATH + PYTHON_PATH + '"'
 

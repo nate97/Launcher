@@ -29,7 +29,7 @@ if LOCAL_GAME_DOWNLOAD:
     RESOURCE_LINK = 'http://10.0.0.29/index.php/s/95etFJlljKx7Fj5/download'
 else:
     RESOURCE_FILE = 'REMOTE_RESOURCE_LINKS.yaml'
-    RESOURCE_LINK = 'https://dl.dropboxusercontent.com/s/hkmhm6oe35mwbl1/REMOTE_RESOURCE_LINKS.yaml'
+    RESOURCE_LINK = 'https://dl.dropboxusercontent.com/s/jydre9jhj3m9gci/REMOTE_RESOURCE_LINKS.yaml?dl=0'
 
 RESOURCE_NAME = 'resource-links'
 
@@ -40,6 +40,11 @@ RESOURCE_FILEPATH_D = 'resources'
 if CURRENT_PLATFORM == 'Linux':
     BASE_FILEPATH_S = './'
     RESOURCE_FILEPATH_S = './resources/'
+
+elif CURRENT_PLATFORM == 'Darwin':
+    BASE_FILEPATH_S = './'
+    RESOURCE_FILEPATH_S = './resources/'
+
 else:
     BASE_FILEPATH_S = '.\\'
     RESOURCE_FILEPATH_S = 'resources\\'
@@ -87,11 +92,13 @@ LAUNCHER_STATUS_FAILURE = 'Something went wrong while updating.'
 if LOCAL_GAME_SERVER:
     GAME_SERVER = '127.0.0.1'
 else:
-    GAME_SERVER = 'disguisedpenguin.onmypc.net'
+    GAME_SERVER = '157.185.125.55'
 
 ### Relative paths to python install ###
 if CURRENT_PLATFORM == 'Linux':
     PYTHON_PATH = '/usr/bin/python2'
+elif CURRENT_PLATFORM == 'Darwin':
+    PYTHON_PATH = 'python3.10'
 else:
     PYTHON_PATH = '\panda3d\python\ppython.exe'
 

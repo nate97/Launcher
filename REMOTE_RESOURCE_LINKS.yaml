@@ -1,0 +1,134 @@
+file_p3d_win:
+    platform: 'Windows'
+    url: 'https://dl.dropboxusercontent.com/s/k5x49a0msfz2h75/panda3d.zip?dl=0'
+    path: 'base'
+    name: 'panda3d'
+    extension: '.zip'
+    archive: True
+    hash: 'deb4ebc4c2b579b4d01d492fff70cd97'
+
+file_src:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/dz1j0j0vt98xe8r/src.zip?dl=0'
+    path: 'base'
+    name: 'src'
+    extension: '.zip'
+    archive: True
+    hash: '8ffc80842844ea601e9a6acfb2c2b612'
+
+file_phase_3:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/aejatfwsha8kj4x/phase_3.mf?dl=0'
+    path: 'resources'
+    name: 'phase_3'
+    extension: '.mf'
+    archive: False
+    hash: '6e0b8bfef390c84958555d3d54fc3f74'
+
+file_phase_35:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/yguwy5pee0zz7np/phase_3.5.mf?dl=0'
+    path: 'resources'
+    name: 'phase_3.5'
+    extension: '.mf'
+    archive: False
+    hash: 'e61fe07391e83ff20a20c2beb1346f8e'
+
+file_phase_4:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/jbeh64pcjfmc544/phase_4.mf?dl=0'
+    path: 'resources'
+    name: 'phase_4'
+    extension: '.mf'
+    archive: False
+    hash: 'b555b363e0653f1fd0079283e590b9a5'
+
+file_phase_5:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/ygp2vuqtb3vvom0/phase_5.mf?dl=0'
+    path: 'resources'
+    name: 'phase_5'
+    extension: '.mf'
+    archive: False
+    hash: '8e889a5e2cc38c963e9b7abd0d515efb'
+
+file_phase_55:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/g4p6wjckrjwinvy/phase_5.5.mf?dl=0'
+    path: 'resources'
+    name: 'phase_5.5'
+    extension: '.mf'
+    archive: False
+    hash: '0594872d995b2c1a3282b17ae5877450'
+
+file_phase_6:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/pwdfme3icgg8rxh/phase_6.mf?dl=0'
+    path: 'resources'
+    name: 'phase_6'
+    extension: '.mf'
+    archive: False
+    hash: 'cc5129628757b4f5d10794cda1914eaa'
+
+file_phase_7:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/n9au2hwq5q1yifq/phase_7.mf?dl=0'
+    path: 'resources'
+    name: 'phase_7'
+    extension: '.mf'
+    archive: False
+    hash: '3e22bccf9d458931854ea0826dec9bb5'
+
+file_phase_8:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/2nfoai6msv7t6pk/phase_8.mf?dl=0'
+    path: 'resources'
+    name: 'phase_8'
+    extension: '.mf'
+    archive: False
+    hash: 'da9ea193a804e1853238b184ded79e3f'
+
+file_phase_9:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/da0od9zijhlp21z/phase_9.mf?dl=0'
+    path: 'resources'
+    name: 'phase_9'
+    extension: '.mf'
+    archive: False
+    hash: '6a67490e7124bf4535893cce7696d614'
+
+file_phase_10:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/dedx135c9g62shn/phase_10.mf?dl=0'
+    path: 'resources'
+    name: 'phase_10'
+    extension: '.mf'
+    archive: False
+    hash: '4faa1865320e56f54ac79bc8a0806ebd'
+
+file_phase_11:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/6td6bv39l5jkw68/phase_11.mf?dl=0'
+    path: 'resources'
+    name: 'phase_11'
+    extension: '.mf'
+    archive: False
+    hash: '06f98fe0dbb0fe91ab3991c034ddfedd'
+
+file_phase_12:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/63kasb442nphjrd/phase_12.mf?dl=0'
+    path: 'resources'
+    name: 'phase_12'
+    extension: '.mf'
+    archive: False
+    hash: '3d49d967e5714c90db9e77653f201552'
+
+file_phase_13:
+    platform: 'all'
+    url: 'https://dl.dropboxusercontent.com/s/gzw66tl39d82am7/phase_13.mf?dl=0'
+    path: 'resources'
+    name: 'phase_13'
+    extension: '.mf'
+    archive: False
+    hash: '84e48496414e1c01ef69bbaaa60e5f11'
