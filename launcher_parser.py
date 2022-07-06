@@ -17,7 +17,7 @@ class LauncherParser():
     def extractLinks(self, file_name):
         # Read the YAML file
         with open(file_name, 'r') as stream:
-            data_loaded = yaml.load(stream)
+            data_loaded = yaml.safe_load(stream)
 
         for file_data in data_loaded:
             link_line = (data_loaded[file_data])

@@ -14,6 +14,8 @@ class GameStarter():
 
         if CURRENT_PLATFORM == 'Linux':
             self.python_path = PYTHON_PATH
+        elif CURRENT_PLATFORM == 'Darwin':
+            self.python_path = PYTHON_PATH
         else:
             self.python_path = '"'+ CURRENT_PATH + PYTHON_PATH + '"'
 
@@ -25,6 +27,8 @@ class GameStarter():
 
         ### Game starting commands ###
         if CURRENT_PLATFORM == 'Linux':
+            cmd_00 = 'export ttiUsername=' + self.uiCallback.uName + ' && export ttiPassword=' + self.uiCallback.pWord + ' && export TTI_GAMESERVER=' + GAME_SERVER + ' && cd src/ && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie
+        elif CURRENT_PLATFORM == 'Darwin':
             cmd_00 = 'export ttiUsername=' + self.uiCallback.uName + ' && export ttiPassword=' + self.uiCallback.pWord + ' && export TTI_GAMESERVER=' + GAME_SERVER + ' && cd src/ && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie
         else:
             cmd_00 = 'set ttiUsername=' + self.uiCallback.uName + ' && set ttiPassword=' + self.uiCallback.pWord + ' && set TTI_GAMESERVER=' + GAME_SERVER + ' && cd "src" && ' + self.python_path + ' -O -m toontown.toonbase.ClientStart ' + cookie

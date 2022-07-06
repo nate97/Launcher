@@ -176,6 +176,7 @@ font: 14pt;</string>
      <property name="styleSheet">
       <string notr="true">QLabel {
 background-color: rgba(249,249,249, 0);
+color: black;
 border-radius: 0;
 border: 0px solid #ffffff;
 padding: 0px;
