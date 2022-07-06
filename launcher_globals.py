@@ -96,7 +96,7 @@ else:
 
 ### Relative paths to python install ###
 if CURRENT_PLATFORM == 'Linux':
-    PYTHON_PATH = '/usr/bin/python2'
+    PYTHON_PATH = '/usr/bin/python3'
 elif CURRENT_PLATFORM == 'Darwin':
     PYTHON_PATH = 'python3.10'
 else:
